@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>작품 상세</title>
+
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0">
+
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+
+        .detail-header {
+            height: 80px;
+
+            display: flex;
+            align-items: center;
+
+            padding: 0 30px;
+
+            border-bottom: 1px solid #eee;
+        }
+
+        .back-btn {
+            border: none;
+            background: none;
+            cursor: pointer;
+        }
+
+        .back-btn span {
+            font-size: 30px;
+        }
+
+        .detail-title {
+            flex: 1;
+            text-align: center;
+
+            font-size: 21px;
+
+            margin-right: 30px;
+        }
+
+        .detail-image {
+            width: calc(100% - 60px);
+            height: 450px;
+
+            margin: 30px auto;
+
+            border-radius: 18px;
+
+            background-image: url(
+                "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=80"
+            );
+
+            background-size: cover;
+            background-position: center;
+        }
+
+        .detail-info {
+            padding: 0 30px 50px;
+        }
+
+        .category {
+            color: #df657c;
+            background: #fbe8ec;
+
+            padding: 6px 12px;
+
+            border-radius: 20px;
+
+            font-size: 13px;
+        }
+
+        .detail-info h1 {
+            margin-top: 15px;
+            font-size: 28px;
+        }
+
+        .author {
+            color: #999;
+        }
+
+        .actions {
+            display: flex;
+            gap: 10px;
+
+            margin-top: 20px;
+        }
+
+        .action {
+            padding: 10px 15px;
+
+            border: 1px solid #eee;
+
+            border-radius: 20px;
+
+            background: white;
+        }
+
+        .evaluation {
+            margin-top: 35px;
+
+            border-top: 1px solid #eee;
+
+            padding-top: 25px;
+        }
+
+        .evaluation h2 {
+            font-size: 20px;
+        }
+
+        .evaluation p {
+            margin: 15px 0;
+            color: #777;
+        }
+
+        @media (max-width: 700px) {
+
+            .detail-image {
+                width: calc(100% - 36px);
+                height: 330px;
+            }
+
+            .detail-info {
+                padding: 0 18px 40px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+<div class="app">
+
+    <!-- 상단 -->
+
+    <header class="detail-header">
+
+        <button class="back-btn" onclick="history.back()">
+
+            <span class="material-symbols-rounded">
+                arrow_back
+            </span>
+
+        </button>
+
+        <h1 class="detail-title">
+            작품 상세
+        </h1>
+
+    </header>
+
+
+    <!-- 작품 이미지 -->
+
+    <div class="detail-image" id="detailImage"></div>
+
+
+    <!-- 작품 정보 -->
+
+    <section class="detail-info">
+
+       <span class="category" id="detailCategory">
+    사진
+</span>
+
+<h1 id="detailTitle">
+    노을지는 바다
+</h1>
+
+<p class="author" id="detailAuthor">
+    김지은 · 2026.10.03
+</p>
+
+
+        <!-- 버튼 -->
+
+        <div class="actions">
+
+            <button class="action">
+                ❤️ 좋아요 32
+            </button>
+
+            <button class="action">
+                💬 댓글 5
+            </button>
+
+            <button class="action">
+                🔖 저장
+            </button>
+
+        </div>
+
+
+        <!-- 평가 -->
+
+        <div class="evaluation">
+
+            <h2>
+                작품 평가
+            </h2>
+
+            <p>
+                🎨 디자인　　★★★★★
+            </p>
+
+            <p>
+                💡 전달력　　★★★★☆
+            </p>
+
+            <p>
+                ✨ 창의성　　★★★★★
+            </p>
+
+            <p>
+                👍 사용성　　★★★★☆
+            </p>
+
+        </div>
+
+
+        <!-- 개선 의견 -->
+
+        <div class="evaluation">
+
+            <h2>
+                개선 의견
+            </h2>
+
+            <p>
+                노을의 색감과 구도가 잘 어우러져
+                작품의 분위기가 잘 전달됩니다.
+            </p>
+
+        </div>
+
+    </section>
+
+</div>
+<script>
+
+    // Lấy id từ đường link
+    const params = new URLSearchParams(window.location.search);
+
+    const id = params.get("id");
+
+
+    // Thông tin các tác phẩm
+    const works = {
+
+        1: {
+            category: "사진",
+            title: "노을지는 바다",
+            author: "김지은",
+            date: "2026.10.03",
+            image: "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=80"
+        },
+
+        2: {
+            category: "일러스트",
+            title: "꿈을 향해",
+            author: "박서연",
+            date: "2026.10.02",
+            image: "https://images.unsplash.com/photo-1577083552431-6e5fd01988a5?auto=format&fit=crop&w=1200&q=80"
+        },
+
+        3: {
+            category: "사진",
+            title: "고양이의 하루",
+            author: "이도현",
+            date: "2026.10.01",
+            image: "https://images.unsplash.com/photo-1518791841217-8f162f1e1131?auto=format&fit=crop&w=1200&q=80"
+        },
+
+        4: {
+            category: "디자인",
+            title: "빛과 그림자",
+            author: "최민지",
+            date: "2026.09.30",
+            image: "https://images.unsplash.com/photo-1494438639946-1ebd1d20bf85?auto=format&fit=crop&w=1200&q=80"
+        }
+
+    };
+
+
+    // 선택한 작품 가져오기
+    const work = works[id] || works[1];
+
+
+    // 화면에 정보 넣기
+    document.getElementById("detailCategory").textContent =
+        work.category;
+
+    document.getElementById("detailTitle").textContent =
+        work.title;
+
+    document.getElementById("detailAuthor").textContent =
+        work.author + " · " + work.date;
+
+
+    // 작품 이미지 변경
+    document.getElementById("detailImage").style.backgroundImage =
+        `url("${work.image}")`;
+
+</script>
+</body>
+
+</html>

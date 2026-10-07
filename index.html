@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>학생 작품 전시</title>
+
+    <!-- Google Material Symbols -->
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0">
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700&display=swap"
+          rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<div class="app">
+
+    <!-- ================= HEADER ================= -->
+    <header class="header">
+
+        <div class="logo-area">
+            <span class="material-symbols-rounded logo-icon">
+                palette
+            </span>
+
+            <h1>학생 작품 전시</h1>
+        </div>
+
+        <!-- 검색 버튼 -->
+        <button class="search-btn">
+            <span class="material-symbols-rounded">
+                search
+            </span>
+        </button>
+
+    </header>
+
+
+    <!-- ================= MAIN ================= -->
+    <main>
+
+        <!-- ================= BANNER ================= -->
+       <section class="banner">
+
+    <!-- Banner 1 -->
+    <div class="banner-slide active">
+        <img src="https://images.unsplash.com/photo-1490750967868-88aa4486c946?auto=format&fit=crop&w=1600&q=80">
+
+        <div class="banner-text">
+            <p>학생들의</p>
+            <p>다양한 작품을</p>
+            <p>만나보세요 <span>♥</span></p>
+        </div>
+    </div>
+
+    <!-- Banner 2 -->
+    <div class="banner-slide">
+        <img src="https://images.unsplash.com/photo-1513364776144-60967b0f800f?auto=format&fit=crop&w=1600&q=80">
+
+        <div class="banner-text">
+            <p>새로운 작품을</p>
+            <p>발견해보세요</p>
+            <p>✨ 함께 감상해요</p>
+        </div>
+    </div>
+
+    <!-- Banner 3 -->
+    <div class="banner-slide">
+        <img src="https://images.unsplash.com/photo-1549490349-8643362247b5?auto=format&fit=crop&w=1600&q=80">
+
+        <div class="banner-text">
+            <p>학생들의</p>
+            <p>창의적인 이야기를</p>
+            <p>만나보세요 🎨</p>
+        </div>
+    </div>
+
+</section>
+
+<!-- Banner dots -->
+<div class="banner-dots">
+    <span class="dot active"></span>
+    <span class="dot"></span>
+    <span class="dot"></span>
+</div>
+
+        <!-- ================= CATEGORY ================= -->
+        <section class="categories">
+
+            <div class="category">
+                <div class="category-icon pink">
+                    <span class="material-symbols-rounded">
+                        image
+                    </span>
+                </div>
+                <p>전체</p>
+            </div>
+
+
+            <div class="category">
+                <div class="category-icon purple">
+                    <span class="material-symbols-rounded">
+                        brush
+                    </span>
+                </div>
+                <p>회화</p>
+            </div>
+
+
+            <div class="category">
+                <div class="category-icon green">
+                    <span class="material-symbols-rounded">
+                        photo_camera
+                    </span>
+                </div>
+                <p>사진</p>
+            </div>
+
+
+            <div class="category">
+                <div class="category-icon yellow">
+                    <span class="material-symbols-rounded">
+                        deployed_code
+                    </span>
+                </div>
+                <p>디자인</p>
+            </div>
+
+
+            <div class="category">
+                <div class="category-icon blue">
+                    <span class="material-symbols-rounded">
+                        smart_display
+                    </span>
+                </div>
+                <p>영상</p>
+            </div>
+
+
+            <div class="category">
+                <div class="category-icon pink2">
+                    <span class="material-symbols-rounded">
+                        star
+                    </span>
+                </div>
+                <p>기타</p>
+            </div>
+
+        </section>
+
+
+        <!-- ================= LATEST WORK ================= -->
+        <section class="latest">
+
+            <div class="section-title">
+
+                <div class="title-left">
+                    <span class="material-symbols-rounded">
+                        auto_awesome
+                    </span>
+
+                    <h2>최신 작품</h2>
+                </div>
+
+                <div class="more">
+                    더보기
+                    <span class="material-symbols-rounded">
+                        chevron_right
+                    </span>
+                </div>
+
+            </div>
+
+
+            <!-- 작품 카드 -->
+            <div class="works">
+
+
+                <!-- 작품 1 -->
+                <a href="detail.html?id=1" class="work-card">
+
+                    <div class="work-image image1">
+                        <span class="work-tag">사진</span>
+                    </div>
+
+                    <div class="work-info">
+
+                        <h3>노을지는 바다</h3>
+
+                        <p class="author">김지은</p>
+
+                        <div class="work-bottom">
+
+                            <div class="like">
+                                <span class="material-symbols-rounded">
+                                    favorite
+                                </span>
+                                32
+                            </div>
+
+                            <div class="comment">
+                                <span class="material-symbols-rounded">
+                                    chat_bubble_outline
+                                </span>
+                                5
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </a>
+
+
+                <!-- 작품 2 -->
+                <a href="detail.html?id=2" class="work-card">
+
+                    <div class="work-image image2">
+                        <span class="work-tag">일러스트</span>
+                    </div>
+
+                    <div class="work-info">
+
+                        <h3>꿈을 향해</h3>
+
+                        <p class="author">박서연</p>
+
+                        <div class="work-bottom">
+
+                            <div class="like">
+                                <span class="material-symbols-rounded">
+                                    favorite
+                                </span>
+                                48
+                            </div>
+
+                            <div class="comment">
+                                <span class="material-symbols-rounded">
+                                    chat_bubble_outline
+                                </span>
+                                8
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </a>
+
+
+                <!-- 작품 3 -->
+              <a href="detail.html?id=3" class="work-card">
+
+                    <div class="work-image image3">
+                        <span class="work-tag">사진</span>
+                    </div>
+
+                    <div class="work-info">
+
+                        <h3>고양이의 하루</h3>
+
+                        <p class="author">이도현</p>
+
+                        <div class="work-bottom">
+
+                            <div class="like">
+                                <span class="material-symbols-rounded">
+                                    favorite
+                                </span>
+                                27
+                            </div>
+
+                            <div class="comment">
+                                <span class="material-symbols-rounded">
+                                    chat_bubble_outline
+                                </span>
+                                3
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </a>
+
+
+                <!-- 작품 4 -->
+                <a href="detail.html?id=4" class="work-card">
+
+                    <div cla  ss="work-image image4">
+                        <span class="work-tag">디자인</span>
+                    </div>
+
+                    <div class="work-info">
+
+                        <h3>빛과 그림자</h3>
+
+                        <p class="author">최민지</p>
+
+                        <div class="work-bottom">
+
+                            <div class="like">
+                                <span class="material-symbols-rounded">
+                                    favorite
+                                </span>
+                                41
+                            </div>
+
+                            <div class="comment">
+                                <span class="material-symbols-rounded">
+                                    chat_bubble_outline
+                                </span>
+                                6
+                            </div>
+
+                        </div>
+
+                    </div>
+
+               
+
+            </div>
+            </a>
+
+        </section>
+
+    </main>
+
+
+    <!-- ================= BOTTOM NAVIGATION ================= -->
+
+    <nav class="bottom-nav">
+
+        <!-- 홈 -->
+        <a href="#" class="nav-item active">
+
+            <span class="material-symbols-rounded">
+                home
+            </span>
+
+            <span>홈</span>
+
+        </a>
+
+
+        <!-- 작품 -->
+        <a href="#" class="nav-item">
+
+            <span class="material-symbols-rounded">
+                image
+            </span>
+
+            <span>작품</span>
+
+        </a>
+
+
+        <!-- 등록하기 -->
+        <a href="register.html" class="nav-item">
+
+    <span class="material-symbols-rounded">
+        add_circle
+    </span>
+
+    <span>등록하기</span>
+
+</a>
+
+        <!-- 알림 -->
+        <a href="#" class="nav-item">
+
+            <span class="material-symbols-rounded">
+                notifications
+            </span>
+
+            <span>알림</span>
+
+        </a>
+
+
+        <!-- 마이페이지 -->
+        <a href="mypage.html" class="nav-item">
+    <span class="material-symbols-rounded">
+        person
+    </span>
+
+    <span>마이페이지</span>
+</a>
+    </nav>
+
+</div>
+<script>
+    const slides = document.querySelectorAll(".banner-slide");
+    const dots = document.querySelectorAll(".banner-dots .dot");
+
+    let currentSlide = 0;
+
+    function showSlide(index) {
+        slides.forEach(slide => {
+            slide.classList.remove("active");
+        });
+
+        dots.forEach(dot => {
+            dot.classList.remove("active");
+        });
+
+        slides[index].classList.add("active");
+        dots[index].classList.add("active");
+    }
+
+   
+    setInterval(() => {
+        currentSlide++;
+
+        if (currentSlide >= slides.length) {
+            currentSlide = 0;
+        }
+
+        showSlide(currentSlide);
+    }, 3000);
+
+   
+    dots.forEach((dot, index) => {
+        dot.addEventListener("click", () => {
+            currentSlide = index;
+            showSlide(currentSlide);
+        });
+    });
+</script>
+<!-- Footer -->
+<footer class="footer">
+    <div class="footer-content">
+
+        <h3>학생 작품 전시</h3>
+
+        <p class="footer-description">
+            학생들의 다양한 작품을 만나보세요.
+        </p>
+
+        <div class="contact">
+            <span>📧</span>
+            <span>student.gallery@gmail.com</span>
+        </div>
+
+        <div class="footer-links">
+            <a href="#">사이트 소개</a>
+            <span>·</span>
+            <a href="#">이용약관</a>
+            <span>·</span>
+            <a href="#">개인정보처리방침</a>
+        </div>
+
+        <p class="copyright">
+            © 2026 Namseouluniversity
+        </p>
+
+    </div>
+</footer>
+
+</body>
+</html>
+</body>
+</html>
