@@ -23,6 +23,7 @@
 <body>
 
 <div class="app">
+    
 
     <!-- ================= HEADER ================= -->
     <header class="header">
@@ -49,49 +50,52 @@
     <main>
 
         <!-- ================= BANNER ================= -->
-       <section class="banner">
+    
 
-    <!-- Banner 1 -->
-    <div class="banner-slide active">
-        <img src="https://images.unsplash.com/photo-1490750967868-88aa4486c946?auto=format&fit=crop&w=1600&q=80">
+<!-- ================= BANNER ================= -->
+<section class="event-banner">
 
-        <div class="banner-text">
-            <p>학생들의</p>
-            <p>다양한 작품을</p>
-            <p>만나보세요 <span>♥</span></p>
-        </div>
+    <div class="event-slide poster-1 active">
+        <span class="event-label">SPECIAL EXHIBITION</span>
+        <h2>ART<br>EXHIBITION</h2>
+        <p>학생들의 특별한 작품을 만나보세요.</p>
+        <a href="work.html" class="event-button">
+            작품 보러 가기 ↗
+        </a>
+        <span class="event-number">01 / 03</span>
     </div>
 
-    <!-- Banner 2 -->
-    <div class="banner-slide">
-        <img src="https://images.unsplash.com/photo-1513364776144-60967b0f800f?auto=format&fit=crop&w=1600&q=80">
-
-        <div class="banner-text">
-            <p>새로운 작품을</p>
-            <p>발견해보세요</p>
-            <p>✨ 함께 감상해요</p>
-        </div>
+    <div class="event-slide poster-2">
+        <span class="event-label">CREATIVE FESTIVAL</span>
+        <h2>CREATE<br>YOUR ART</h2>
+        <p>새로운 아이디어와 창의적인 만남.</p>
+        <a href="work.html" class="event-button">
+            작품 둘러보기 ↗
+        </a>
+        <span class="event-number">02 / 03</span>
     </div>
 
-    <!-- Banner 3 -->
-    <div class="banner-slide">
-        <img src="https://images.unsplash.com/photo-1549490349-8643362247b5?auto=format&fit=crop&w=1600&q=80">
+    <div class="event-slide poster-3">
+        <span class="event-label">ART WORKSHOP</span>
+        <h2>MAKE<br>SOMETHING</h2>
+        <p>상상력을 작품으로 표현해 보세요.</p>
+        <a href="register.html" class="event-button">
+            작품 등록하기 ↗
+        </a>
+        <span class="event-number">03 / 03</span>
+    </div>
 
-        <div class="banner-text">
-            <p>학생들의</p>
-            <p>창의적인 이야기를</p>
-            <p>만나보세요 🎨</p>
-        </div>
+    <div class="event-dots">
+        <button type="button" class="active"
+                aria-label="첫 번째 포스터"></button>
+        <button type="button"
+                aria-label="두 번째 포스터"></button>
+        <button type="button"
+                aria-label="세 번째 포스터"></button>
     </div>
 
 </section>
 
-<!-- Banner dots -->
-<div class="banner-dots">
-    <span class="dot active"></span>
-    <span class="dot"></span>
-    <span class="dot"></span>
-</div>
 
         <!-- ================= CATEGORY ================= -->
         <section class="categories">
@@ -353,15 +357,11 @@
 
 
         <!-- 작품 -->
-        <a href="#" class="nav-item">
-
-            <span class="material-symbols-rounded">
-                image
-            </span>
-
-            <span>작품</span>
-
-        </a>
+        
+<a href="work.html" class="nav-item">
+    <span class="material-symbols-rounded">photo_library</span>
+    <span>작품</span>
+</a>
 
 
         <!-- 등록하기 -->
@@ -376,16 +376,10 @@
 </a>
 
         <!-- 알림 -->
-        <a href="#" class="nav-item">
-
-            <span class="material-symbols-rounded">
-                notifications
-            </span>
-
-            <span>알림</span>
-
-        </a>
-
+       <a href="notification.html" class="nav-item">
+    <span class="material-symbols-rounded">notifications</span>
+    <span>알림</span>
+</a>
 
         <!-- 마이페이지 -->
         <a href="mypage.html" class="nav-item">
@@ -398,44 +392,49 @@
     </nav>
 
 </div>
+
 <script>
-    const slides = document.querySelectorAll(".banner-slide");
-    const dots = document.querySelectorAll(".banner-dots .dot");
+    const slides = document.querySelectorAll(".event-slide");
+    const dots = document.querySelectorAll(".event-dots button");
 
     let currentSlide = 0;
+    let slideTimer;
 
     function showSlide(index) {
-        slides.forEach(slide => {
-            slide.classList.remove("active");
+        slides.forEach((slide, i) => {
+            slide.classList.toggle("active", i === index);
         });
 
-        dots.forEach(dot => {
-            dot.classList.remove("active");
+        dots.forEach((dot, i) => {
+            dot.classList.toggle("active", i === index);
         });
 
-        slides[index].classList.add("active");
-        dots[index].classList.add("active");
+        currentSlide = index;
     }
 
-   
-    setInterval(() => {
-        currentSlide++;
+    function startAutoSlide() {
+        clearInterval(slideTimer);
 
-        if (currentSlide >= slides.length) {
-            currentSlide = 0;
-        }
+        slideTimer = setInterval(() => {
+            const nextSlide = (currentSlide + 1) % slides.length;
+            showSlide(nextSlide);
+        }, 3000);
+    }
 
-        showSlide(currentSlide);
-    }, 3000);
-
-   
     dots.forEach((dot, index) => {
         dot.addEventListener("click", () => {
-            currentSlide = index;
-            showSlide(currentSlide);
+            showSlide(index);
+            startAutoSlide();
         });
     });
+
+    if (slides.length > 0 && dots.length === slides.length) {
+        showSlide(0);
+        startAutoSlide();
+    }
 </script>
+
+
 <!-- Footer -->
 <footer class="footer">
     <div class="footer-content">
@@ -466,7 +465,10 @@
     </div>
 </footer>
 
+
 </body>
 </html>
+
+
 </body>
 </html>
