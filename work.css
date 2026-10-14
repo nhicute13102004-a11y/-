@@ -1,0 +1,459 @@
+
+/* 작품 목록 페이지 */
+
+.work-header {
+    min-height: 100px;
+    padding: 22px 28px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    border-bottom: 1px solid #f0e8e7;
+    background: #fffaf8;
+}
+
+.header-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.header-logo > .material-symbols-rounded {
+    font-size: 38px;
+    color: #a87976;
+}
+
+.header-logo h1 {
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.header-logo p {
+    margin-top: 5px;
+    color: #9a8583;
+    font-size: 12px;
+}
+
+.search-icon {
+    width: 42px;
+    height: 42px;
+    display: grid;
+    place-items: center;
+    border: none;
+    border-radius: 50%;
+    background: transparent;
+    color: #554947;
+    cursor: pointer;
+}
+
+.search-icon:hover {
+    background: #f7e9eb;
+}
+
+.search-icon .material-symbols-rounded {
+    font-size: 25px;
+}
+
+.work-main {
+    padding: 30px 28px 120px;
+}
+
+.work-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    margin-bottom: 24px;
+}
+
+.eyebrow {
+    margin-bottom: 6px;
+    color: #c47d8c;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+.work-heading h2 {
+    font-size: 30px;
+    font-weight: 700;
+}
+
+.heading-description {
+    margin-top: 7px;
+    color: #948987;
+    font-size: 13px;
+}
+
+.upload-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    padding: 11px 15px;
+    border-radius: 12px;
+    background: #df7188;
+    color: #fff;
+    font-size: 13px;
+    white-space: nowrap;
+    transition: 0.2s;
+}
+
+.upload-button:hover {
+    background: #cf5d76;
+    transform: translateY(-2px);
+}
+
+.upload-button .material-symbols-rounded {
+    font-size: 19px;
+}
+
+.search-box {
+    display: none;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+    padding: 13px 16px;
+    border: 1px solid #eee2e2;
+    border-radius: 14px;
+    background: #fff;
+}
+
+.search-box.show {
+    display: flex;
+}
+
+.search-box .material-symbols-rounded {
+    color: #a79796;
+}
+
+.search-box input {
+    width: 100%;
+    border: none;
+    outline: none;
+    background: transparent;
+    font-family: inherit;
+    font-size: 13px;
+}
+
+.filter-list {
+    display: flex;
+    gap: 9px;
+    overflow-x: auto;
+    padding: 2px 0 8px;
+    margin-bottom: 28px;
+    scrollbar-width: none;
+}
+
+.filter-list::-webkit-scrollbar {
+    display: none;
+}
+
+.filter-btn {
+    flex-shrink: 0;
+    padding: 9px 17px;
+    border: 1px solid #eee4e4;
+    border-radius: 22px;
+    background: #fff;
+    color: #756968;
+    font-family: inherit;
+    font-size: 12px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+    border-color: #df7188;
+    background: #df7188;
+    color: #fff;
+}
+
+.list-heading {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 18px;
+}
+
+.list-heading h3 {
+    font-size: 19px;
+    font-weight: 700;
+}
+
+.list-heading p {
+    margin-top: 5px;
+    color: #9a8d8b;
+    font-size: 12px;
+}
+
+#resultCount {
+    color: #a18f8d;
+    font-size: 12px;
+    white-space: nowrap;
+}
+
+.works-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 22px 18px;
+}
+
+.work-card {
+    min-width: 0;
+    overflow: hidden;
+    border: 1px solid #f0e8e7;
+    border-radius: 15px;
+    background: #fff;
+    box-shadow: 0 3px 12px rgb(100 70 70 / 4%);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.work-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgb(100 70 70 / 10%);
+}
+
+.work-card[hidden] {
+    display: none;
+}
+
+.work-image-wrap {
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 4 / 3;
+    background: #f2e9e7;
+}
+
+.work-image-wrap img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.35s;
+}
+
+.work-card:hover .work-image-wrap img {
+    transform: scale(1.04);
+}
+
+.work-category {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    padding: 5px 9px;
+    border-radius: 7px;
+    background: rgb(255 255 255 / 90%);
+    color: #655957;
+    font-size: 10px;
+}
+
+.work-info {
+    padding: 13px 13px 14px;
+}
+
+.work-info h4 {
+    overflow: hidden;
+    color: #383130;
+    font-size: 14px;
+    font-weight: 600;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.work-author {
+    margin-top: 7px;
+    color: #958785;
+    font-size: 11px;
+}
+
+.work-meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 5px;
+    margin-top: 13px;
+    color: #a39492;
+    font-size: 10px;
+}
+
+.like-count {
+    color: #e36d85;
+    white-space: nowrap;
+}
+
+.no-results {
+    display: none;
+    padding: 45px 10px;
+    color: #9a8d8b;
+    text-align: center;
+    font-size: 14px;
+}
+
+/* 하단 메뉴 */
+
+.bottom-nav {
+    position: fixed;
+    z-index: 100;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    padding: 12px 12px calc(12px + env(safe-area-inset-bottom));
+    border-top: 1px solid #f0e8e7;
+    background: rgb(255 255 255 / 96%);
+    backdrop-filter: blur(12px);
+}
+
+.nav-item {
+    display: flex;
+    flex: 1;
+    max-width: 150px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    color: #a69b99;
+    font-size: 10px;
+    transition: color 0.2s;
+}
+
+.nav-item .material-symbols-rounded {
+    font-size: 23px;
+}
+
+.nav-item.active,
+.nav-item:hover {
+    color: #e36d85;
+}
+
+/* 반응형 레이아웃 */
+
+@media (min-width: 1200px) {
+    .work-main {
+        padding-right: 40px;
+        padding-left: 40px;
+    }
+
+    .works-grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 800px) {
+    .work-header {
+        padding: 18px 20px;
+    }
+
+    .work-main {
+        padding: 24px 20px 115px;
+    }
+
+    .works-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 16px 12px;
+    }
+
+    .work-info {
+        padding: 11px;
+    }
+}
+
+@media (max-width: 420px) {
+    .header-logo h1 {
+        font-size: 20px;
+    }
+
+    .header-logo p {
+        font-size: 11px;
+    }
+
+    .work-main {
+        padding-right: 14px;
+        padding-left: 14px;
+    }
+
+    .work-heading h2 {
+        font-size: 26px;
+    }
+
+    .upload-button {
+        padding: 10px 11px;
+        font-size: 12px;
+    }
+
+    .filter-btn {
+        padding: 8px 13px;
+    }
+
+    .work-info h4 {
+        font-size: 13px;
+    }
+}
+
+/* 하단 메뉴 위치 수정 */
+
+.app {
+    position: relative;
+    width: 100%;
+    max-width: 1100px;
+    min-height: 100vh;
+    margin: 0 auto;
+    padding-bottom: 100px;
+    box-sizing: border-box;
+}
+
+.bottom-nav {
+    position: fixed !important;
+    left: 50% !important;
+    right: auto !important;
+    bottom: 0 !important;
+    transform: translateX(-50%);
+    width: 100% !important;
+    max-width: 1100px !important;
+    min-height: 76px;
+    margin: 0 !important;
+    padding: 10px 8px calc(10px + env(safe-area-inset-bottom));
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center;
+    justify-content: space-around;
+    box-sizing: border-box;
+    border-top: 1px solid #f0e8e7;
+    background: rgba(255, 255, 255, 0.98);
+    z-index: 9999;
+}
+
+.bottom-nav .nav-item {
+    position: static !important;
+    display: flex !important;
+    flex: 1 1 20% !important;
+    width: 20% !important;
+    max-width: none !important;
+    min-width: 0;
+    margin: 0 !important;
+    padding: 0 !important;
+    flex-direction: column !important;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.bottom-nav .nav-item .material-symbols-rounded {
+    display: block;
+    font-size: 23px;
+}
+
+.bottom-nav .nav-item > span:last-child {
+    display: block;
+    font-size: 10px;
+    white-space: nowrap;
+}
+
+.work-main {
+    padding-bottom: 110px;
+}

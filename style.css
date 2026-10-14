@@ -969,3 +969,260 @@ a {
     font-size: 11px;
     color: #bbbbbb;
 }
+.image1 {
+    background-image: url(
+        "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=800&q=80"
+    );
+}
+
+.image2 {
+    background-image: url(
+        "https://images.unsplash.com/photo-1522383225653-ed111181a951?auto=format&fit=crop&w=800&q=80"
+    );
+}
+
+.image3 {
+    background-image: url(
+        "https://images.unsplash.com/photo-1519501025264-65ba15a82390?auto=format&fit=crop&w=800&q=80"
+    );
+}
+
+.image4 {
+    background-image: url(
+        "https://images.unsplash.com/photo-1518791841217-8f162f1e1131?auto=format&fit=crop&w=800&q=80"
+    );
+}
+
+.image5 {
+    background-image: url(
+        "https://images.unsplash.com/photo-1490750967868-88aa4486c946?auto=format&fit=crop&w=800&q=80"
+    );
+}
+
+.image6 {
+    background-image: url(
+        "https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=800&q=80"
+    );
+}
+
+.image7 {
+    background-image: url(
+        "https://images.unsplash.com/photo-1513364776144-60967b0f800f?auto=format&fit=crop&w=800&q=80"
+    );
+}
+
+.image8 {
+    background-image: url(
+        "https://images.unsplash.com/photo-1549490349-8643362247b5?auto=format&fit=crop&w=800&q=80"
+    );
+}
+
+/* 좋아요 및 댓글 */
+
+.actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 20px 0;
+}
+
+.action {
+    padding: 10px 16px;
+    border: 1px solid #e5dada;
+    border-radius: 20px;
+    background: #fff;
+    color: #555;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.action:hover {
+    background: #fcecef;
+}
+
+#likeBtn.liked {
+    color: #e45b7a;
+    background: #fff0f3;
+    border-color: #e45b7a;
+}
+
+.comments-section {
+    display: none;
+    margin-top: 25px;
+    padding: 20px;
+    background: #fff;
+    border-radius: 16px;
+}
+
+.comments-section.show {
+    display: block;
+}
+
+.comments-section h2 {
+    margin-bottom: 15px;
+    font-size: 20px;
+}
+
+.comment-item {
+    padding: 12px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.comment-name {
+    margin-bottom: 5px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.comment-text {
+    font-size: 14px;
+    overflow-wrap: anywhere;
+}
+
+.comment-time {
+    margin-top: 5px;
+    color: #999;
+    font-size: 12px;
+}
+
+.empty-comments {
+    padding: 10px 0;
+    color: #999;
+    font-size: 14px;
+}
+
+.comment-input {
+    display: flex;
+    gap: 8px;
+    margin-top: 15px;
+}
+
+.comment-input input {
+    flex: 1;
+    min-width: 0;
+    padding: 12px;
+    border: 1px solid #e5dada;
+    border-radius: 10px;
+    outline: none;
+}
+
+.comment-input button {
+    padding: 10px 16px;
+    border: none;
+    border-radius: 10px;
+    background: #e8c9d2;
+    cursor: pointer;
+}
+
+
+/* ===== POSTER NGHỆ THUẬT ===== */
+
+.event-banner {
+    position: relative;
+    overflow: hidden;
+    border-radius: 24px;
+    isolation: isolate;
+}
+
+.event-slide {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+
+/* Poster 1 */
+.event-banner .event-slide.poster-1 {
+    background-image:
+        linear-gradient(
+            90deg,
+            rgba(237, 220, 238, 0.85) 0%,
+            rgba(237, 220, 238, 0.35) 55%,
+            rgba(237, 220, 238, 0.05) 100%
+        ),
+        url("../img/poster1.jpg");
+}
+
+/* Poster 2 */
+.event-banner .event-slide.poster-2 {
+    background-image:
+        linear-gradient(
+            90deg,
+            rgba(237, 220, 238, 0.85) 0%,
+            rgba(237, 220, 238, 0.35) 55%,
+            rgba(237, 220, 238, 0.05) 100%
+        ),
+        url("../img/poster2.jpg");
+}
+
+/* Poster 3 */
+.event-banner .event-slide.poster-3 {
+    background-image:
+        linear-gradient(
+            90deg,
+            rgba(237, 220, 238, 0.85) 0%,
+            rgba(237, 220, 238, 0.35) 55%,
+            rgba(237, 220, 238, 0.05) 100%
+        ),
+        url("../img/poster3.jpg");
+}
+
+/* ===== FIX POSTER SLIDER ===== */
+
+.event-banner {
+    position: relative;
+    height: 352px;
+    min-height: 352px;
+    overflow: hidden;
+    border-radius: 24px;
+    isolation: isolate;
+}
+
+/* Ẩn các poster chưa được chọn */
+.event-banner .event-slide {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    padding: 48px 32px 60px;
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    z-index: 0;
+
+    transition: opacity 0.5s ease;
+}
+
+/* Chỉ hiện poster có class active */
+.event-banner .event-slide.active {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    z-index: 1;
+}
+
+/* Ba chấm nằm trên poster */
+.event-banner .event-dots {
+    position: absolute;
+    left: 32px;
+    bottom: 18px;
+    z-index: 5;
+}
+
+/* Đảm bảo chữ nằm trên lớp nền */
+.event-banner .event-slide > * {
+    position: relative;
+}
+
+/* Hiện số poster ở góc dưới bên phải */
+.event-banner .event-slide .event-number {
+    position: absolute;
+    right: 28px;
+    bottom: 18px;
+}
