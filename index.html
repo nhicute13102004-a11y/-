@@ -28,13 +28,15 @@
     <!-- ================= HEADER ================= -->
     <header class="header">
 
-        <div class="logo-area">
-            <span class="material-symbols-rounded logo-icon">
-                palette
-            </span>
+       
 
-            <h1>학생 작품 전시</h1>
-        </div>
+<div class="logo-area">
+    <a href="index.html" class="brand-logo">
+        <img src="img/logo-header.png" alt="여백 로고">
+    </a>
+    <h1 class="site-title">학생 작품 전시</h1>
+</div>
+
 
         <!-- 검색 버튼 -->
         <button class="search-btn">
@@ -173,14 +175,14 @@
                     </span>
 
                     <h2>최신 작품</h2>
+                    
                 </div>
 
-                <div class="more">
-                    더보기
-                    <span class="material-symbols-rounded">
-                        chevron_right
-                    </span>
-                </div>
+                
+<a href="work.html" class="more-link">
+    더보기 <span class="material-symbols-rounded">chevron_right</span>
+</a>
+
 
             </div>
 
@@ -298,44 +300,133 @@
 
 
                 <!-- 작품 4 -->
-                <a href="detail.html?id=4" class="work-card">
+             
+<!-- 작품 4 -->
+<a href="detail.html?id=4" class="work-card">
+    <div class="work-image image4">
+        <span class="work-tag">디자인</span>
+    </div>
 
-                    <div cla  ss="work-image image4">
-                        <span class="work-tag">디자인</span>
-                    </div>
+    <div class="work-info">
+        <h3>빛과 그림자</h3>
+        <p class="author">최민지</p>
 
-                    <div class="work-info">
-
-                        <h3>빛과 그림자</h3>
-
-                        <p class="author">최민지</p>
-
-                        <div class="work-bottom">
-
-                            <div class="like">
-                                <span class="material-symbols-rounded">
-                                    favorite
-                                </span>
-                                41
-                            </div>
-
-                            <div class="comment">
-                                <span class="material-symbols-rounded">
-                                    chat_bubble_outline
-                                </span>
-                                6
-                            </div>
-
-                        </div>
-
-                    </div>
-
-               
-
+        <div class="work-bottom">
+            <div class="like">
+                <span class="material-symbols-rounded">favorite</span>
+                41
             </div>
-            </a>
+
+            <div class="comment">
+                <span class="material-symbols-rounded">chat_bubble_outline</span>
+                6
+            </div>
+        </div>
+    </div>
+</a>
+
 
         </section>
+
+<!-- 졸업 작품 특별전 -->
+<section class="graduation-section">
+    <div class="home-section-heading">
+        <div>
+            <p class="section-eyebrow">2026 GRADUATION EXHIBITION</p>
+            <h2>졸업 작품 특별전</h2>
+            <p class="section-description">
+                새로운 시선, 새로운 시작
+            </p>
+        </div>
+        <span class="section-number">01</span>
+    </div>
+
+    <div class="graduation-banner">
+        <div class="graduation-content">
+            <span class="graduation-label">SPECIAL EXHIBITION</span>
+            <h3>작품으로 전하는<br>우리의 이야기</h3>
+            <p>학생들의 열정과 창의성이 담긴 졸업 작품을 만나보세요.</p>
+            <a href="work.html" class="graduation-button">
+                특별전 둘러보기 ↗
+            </a>
+        </div>
+        <div class="graduation-decoration">
+            <span>여</span>
+            <span>백</span>
+            <div class="decoration-star">✳</div>
+        </div>
+    </div>
+</section>
+
+<!-- 이번 주 인기 작품 -->
+<section class="popular-section">
+    <div class="home-section-heading">
+        <div>
+            <p class="section-eyebrow">WEEKLY PICKS</p>
+            <h2>이번 주 인기 작품</h2>
+            <p class="section-description">
+                많은 관심을 받은 작품을 만나보세요.
+            </p>
+        </div>
+        <a href="work.html" class="section-more">더보기 ↗</a>
+    </div>
+
+    <div class="popular-grid">
+        <a href="detail.html?id=1" class="popular-card">
+            <div class="popular-image image1">
+                <span class="popular-rank">01</span>
+            </div>
+            <div class="popular-info">
+                <span class="popular-category">사진</span>
+                <h3>노을지는 바다</h3>
+                <p>김지은</p>
+                <span class="popular-likes">♡ 32</span>
+            </div>
+        </a>
+
+        <a href="detail.html?id=2" class="popular-card">
+            <div class="popular-image image2">
+                <span class="popular-rank">02</span>
+            </div>
+            <div class="popular-info">
+                <span class="popular-category">일러스트</span>
+                <h3>꿈을 향해</h3>
+                <p>박서연</p>
+                <span class="popular-likes">♡ 48</span>
+            </div>
+        </a>
+
+        <a href="detail.html?id=3" class="popular-card">
+            <div class="popular-image image3">
+                <span class="popular-rank">03</span>
+            </div>
+            <div class="popular-info">
+                <span class="popular-category">사진</span>
+                <h3>고양이의 하루</h3>
+                <p>이도현</p>
+                <span class="popular-likes">♡ 27</span>
+            </div>
+        </a>
+    </div>
+
+    <p class="popular-note">
+        ※ 인기 순위와 좋아요 수는 화면 예시입니다.
+    </p>
+</section>
+
+<!-- 작품 등록 안내 -->
+<section class="register-promo">
+    <div class="register-promo-symbol">✳</div>
+    <p class="section-eyebrow">YOUR ART, YOUR STORY</p>
+    <h2>당신의 작품을 기다립니다</h2>
+    <p class="register-promo-description">
+        여러분의 작품을 전시하고<br>
+        소중한 이야기를 함께 나눠보세요.
+    </p>
+    <a href="register.html" class="register-promo-button">
+        작품 등록하기 <span>↗</span>
+    </a>
+</section>
 
     </main>
 
@@ -439,7 +530,9 @@
 <footer class="footer">
     <div class="footer-content">
 
-        <h3>학생 작품 전시</h3>
+        <a href="index.html" class="brand-logo">
+    <img src="img/logo-header.png" alt="여백">
+</a>
 
         <p class="footer-description">
             학생들의 다양한 작품을 만나보세요.
