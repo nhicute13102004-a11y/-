@@ -1,0 +1,303 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>작품 목록 | 학생 작품 전시</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/work.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+<div class="app">
+
+    <header class="work-header">
+        <a href="index.html" class="header-logo">
+            <span class="material-symbols-rounded">palette</span>
+            <div>
+                <h1>학생 작품 전시</h1>
+                <p>학생들의 다양한 작품을 만나보세요 ♡</p>
+            </div>
+        </a>
+
+        <button class="search-icon" id="searchToggle" type="button" aria-label="검색">
+            <span class="material-symbols-rounded">search</span>
+        </button>
+    </header>
+
+    <main class="work-main">
+
+        <section class="work-heading">
+            <div>
+                <p class="eyebrow">ART GALLERY</p>
+                <h2>작품</h2>
+                <p class="heading-description">마음에 드는 작품을 발견해 보세요.</p>
+            </div>
+
+            <a href="register.html" class="upload-button">
+                <span class="material-symbols-rounded">add</span>
+                작품 등록
+            </a>
+        </section>
+
+        <div class="search-box" id="searchBox">
+            <span class="material-symbols-rounded">search</span>
+            <input type="search" id="workSearch" placeholder="작품명 또는 작가명을 검색하세요">
+        </div>
+
+        <div class="filter-list" id="filterList">
+            <button class="filter-btn active" data-category="전체">전체</button>
+            <button class="filter-btn" data-category="디자인">디자인</button>
+            <button class="filter-btn" data-category="사진">사진</button>
+            <button class="filter-btn" data-category="일러스트">일러스트</button>
+            <button class="filter-btn" data-category="영상">영상</button>
+            <button class="filter-btn" data-category="3D">3D</button>
+        </div>
+
+        <section class="list-heading">
+            <div>
+                <h3>전체 작품</h3>
+                <p>다양한 시선으로 완성한 작품들</p>
+            </div>
+            <span id="resultCount">6개의 작품</span>
+        </section>
+
+        <section class="works-grid" id="worksGrid">
+
+            <a href="detail.html?id=1" class="work-card"
+               data-category="사진" data-title="노을지는 바다" data-author="김지은">
+                <div class="work-image-wrap">
+                   <img src="images/work1.jpg" alt="노을의 순간">
+                    <span class="work-category">사진</span>
+                </div>
+                <div class="work-info">
+                    <h4>노을지는 바다</h4>
+                    <p class="work-author">김지은</p>
+                    <div class="work-meta">
+                        <span>2026.10.02</span>
+                        <span class="like-count">♥ 132</span>
+                    </div>
+                </div>
+            </a>
+
+            <a href="detail.html?id=2" class="work-card"
+               data-category="디자인" data-title="도시의 밤" data-author="박서연">
+                <div class="work-image-wrap">
+               <img src="images/work2.jpg" alt="꿈을 향해">
+                    <span class="work-category">디자인</span>
+                </div>
+                <div class="work-info">
+                    <h4>도시의 밤</h4>
+                    <p class="work-author">박서연</p>
+                    <div class="work-meta">
+                        <span>2026.10.01</span>
+                        <span class="like-count">♥ 118</span>
+                    </div>
+                </div>
+            </a>
+
+            <a href="detail.html?id=3" class="work-card"
+               data-category="사진" data-title="고양이의 하루" data-author="이도현">
+                <div class="work-image-wrap">
+<img src="images/work3.jpg" alt="고양이의 하루">
+                    <span class="work-category">사진</span>
+                </div>
+                <div class="work-info">
+                    <h4>고양이의 하루</h4>
+                    <p class="work-author">이도현</p>
+                    <div class="work-meta">
+                        <span>2026.09.29</span>
+                        <span class="like-count">♥ 96</span>
+                    </div>
+                </div>
+            </a>
+
+            <a href="detail.html?id=4" class="work-card"
+               data-category="일러스트" data-title="봄의 기억" data-author="최민지">
+                <div class="work-image-wrap">
+<img src="images/work4.jpg" alt="따뜻한 시선">
+                    <span class="work-category">일러스트</span>
+                </div>
+                <div class="work-info">
+                    <h4>봄의 기억</h4>
+                    <p class="work-author">최민지</p>
+                    <div class="work-meta">
+                        <span>2026.09.27</span>
+                        <span class="like-count">♥ 86</span>
+                    </div>
+                </div>
+            </a>
+
+            <a href="detail.html?id=5" class="work-card"
+               data-category="영상" data-title="달빛 아래의 꿈" data-author="김지은">
+                <div class="work-image-wrap">
+<img src="images/work5.jpeg" alt="달빛 아래의 꿈">
+                    <span class="work-category">영상</span>
+                </div>
+                <div class="work-info">
+                    <h4>여름의 풍경</h4>
+                    <p class="work-author">김지은</p>
+                    <div class="work-meta">
+                        <span>2026.09.25</span>
+                        <span class="like-count">♥ 88</span>
+                    </div>
+                </div>
+            </a>
+
+            <a href="detail.html?id=6" class="work-card"
+               data-category="3D" data-title="상상의 공간" data-author="한유진">
+                <div class="work-image-wrap">
+<img src="images/work6.jpg" alt="하늘의 색채">
+                    <span class="work-category">3D</span>
+                </div>
+                <div class="work-info">
+                    <h4>상상의 공간</h4>
+                    <p class="work-author">한유진</p>
+                    <div class="work-meta">
+                        <span>2026.09.22</span>
+                        <span class="like-count">♥ 73</span>
+                    </div>
+                </div>
+            </a>
+
+<a href="detail.html?id=7" class="work-card"
+   data-category="디자인" data-title="빛의 정원" data-author="윤서아">
+    <div class="work-image-wrap">
+<img src="images/work7.jpeg" alt="여름의 정원">
+        <span class="work-category">디자인</span>
+    </div>
+    <div class="work-info">
+        <h4>빛의 정원</h4>
+        <p class="work-author">윤서아</p>
+        <div class="work-meta">
+            <span>2026.09.20</span>
+            <span class="like-count">♥ 65</span>
+        </div>
+    </div>
+</a>
+
+<a href="detail.html?id=8" class="work-card"
+   data-category="일러스트" data-title="작은 행복" data-author="김하늘">
+    <div class="work-image-wrap">
+<img src="images/work8.jpeg" alt="분홍빛 풍경">
+        <span class="work-category">일러스트</span>
+    </div>
+    <div class="work-info">
+        <h4>작은 행복</h4>
+        <p class="work-author">김하늘</p>
+        <div class="work-meta">
+            <span>2026.09.18</span>
+            <span class="like-count">♥ 59</span>
+        </div>
+    </div>
+</a>
+
+        </section>
+
+        <p class="no-results" id="noResults">검색 결과가 없습니다.</p>
+
+    </main>
+
+    <nav class="bottom-nav">
+        <a href="index.html" class="nav-item">
+            <span class="material-symbols-rounded">home</span>
+            <span>홈</span>
+        </a>
+
+        <a href="work.html" class="nav-item active">
+            <span class="material-symbols-rounded">photo_library</span>
+            <span>작품</span>
+        </a>
+
+        <a href="register.html" class="nav-item">
+            <span class="material-symbols-rounded">add_circle</span>
+            <span>등록하기</span>
+        </a>
+
+        <a href="notification.html" class="nav-item">
+            <span class="material-symbols-rounded">notifications</span>
+            <span>알림</span>
+        </a>
+
+        <a href="mypage.html" class="nav-item">
+            <span class="material-symbols-rounded">person</span>
+            <span>마이페이지</span>
+        </a>
+    </nav>
+
+</div>
+
+<script>
+const searchToggle = document.getElementById("searchToggle");
+const searchBox = document.getElementById("searchBox");
+const workSearch = document.getElementById("workSearch");
+const filterButtons = document.querySelectorAll(".filter-btn");
+const workCards = document.querySelectorAll(".work-card");
+const resultCount = document.getElementById("resultCount");
+const noResults = document.getElementById("noResults");
+
+let selectedCategory = "전체";
+
+searchToggle.addEventListener("click", function () {
+    searchBox.classList.toggle("show");
+
+    if (searchBox.classList.contains("show")) {
+        workSearch.focus();
+    }
+});
+
+filterButtons.forEach(function (button) {
+    button.addEventListener("click", function () {
+        filterButtons.forEach(function (item) {
+            item.classList.remove("active");
+        });
+
+        button.classList.add("active");
+        selectedCategory = button.dataset.category;
+        filterWorks();
+    });
+});
+
+workSearch.addEventListener("input", filterWorks);
+
+function filterWorks() {
+    const keyword = workSearch.value.trim().toLowerCase();
+    let visibleCount = 0;
+
+    workCards.forEach(function (card) {
+        const category = card.dataset.category;
+        const title = card.dataset.title.toLowerCase();
+        const author = card.dataset.author.toLowerCase();
+
+        const matchesCategory =
+            selectedCategory === "전체" ||
+            category === selectedCategory;
+
+        const matchesKeyword =
+            title.includes(keyword) ||
+            author.includes(keyword);
+
+        const visible = matchesCategory && matchesKeyword;
+
+        card.hidden = !visible;
+
+        if (visible) {
+            visibleCount++;
+        }
+    });
+
+    resultCount.textContent = visibleCount + "개의 작품";
+    noResults.style.display = visibleCount === 0 ? "block" : "none";
+}
+</script>
+
+</body>
+</html>
