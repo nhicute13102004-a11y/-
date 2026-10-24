@@ -13,125 +13,301 @@
     <link rel="stylesheet" href="style.css">
 
     <style>
+        /* 작품 상세 페이지 */
 
-        .detail-header {
-            height: 80px;
+.detail-header {
+    height: 72px;
+    display: flex;
+    align-items: center;
+    padding: 0 30px;
+    background: #fffafb;
+    border-bottom: 1px solid #f0e5e9;
+}
 
-            display: flex;
-            align-items: center;
+.back-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+}
 
-            padding: 0 30px;
+.back-btn span {
+    font-size: 28px;
+    color: #45343b;
+}
 
-            border-bottom: 1px solid #eee;
-        }
+.detail-title {
+    flex: 1;
+    margin: 0 40px 0 0;
+    text-align: center;
+    font-size: 20px;
+    font-weight: 600;
+    color: #45343b;
+}
 
-        .back-btn {
-            border: none;
-            background: none;
-            cursor: pointer;
-        }
+/* 작품 이미지 */
 
-        .back-btn span {
-            font-size: 30px;
-        }
+.detail-image {
+    display: block;
+    width: calc(100% - 60px);
+    height: 520px;
+    margin: 30px auto;
+    border-radius: 12px;
+    object-fit: contain;
+    object-position: center;
+    background-color: #f8f5f5;
+}
 
-        .detail-title {
-            flex: 1;
-            text-align: center;
+@media (max-width: 700px) {
+    .detail-image {
+        width: calc(100% - 36px);
+        height: 420px;
+    }
+}
 
-            font-size: 21px;
+/* 작품 정보 */
 
-            margin-right: 30px;
-        }
+.detail-info {
+    padding: 0 30px 60px;
+    color: #45343b;
+}
 
-        .detail-image {
-            width: calc(100% - 60px);
-            height: 450px;
+.detail-info .category {
+    display: inline-block;
+    padding: 6px 12px;
+    border-radius: 3px;
+    background: #fbe8ee;
+    color: #c75c83;
+    font-size: 12px;
+}
 
-            margin: 30px auto;
+.detail-info h1 {
+    margin: 16px 0 8px;
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 1.5;
+}
 
-            border-radius: 18px;
+.detail-info .author {
+    margin: 0;
+    color: #9b8b91;
+    font-size: 13px;
+    line-height: 1.8;
+}
 
-            background-image: url(
-                "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=80"
-            );
+/* 작품 기능 버튼 */
 
-            background-size: cover;
-            background-position: center;
-        }
+.actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+    margin: 22px 0 30px;
+}
 
-        .detail-info {
-            padding: 0 30px 50px;
-        }
+.action {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    min-height: 38px;
+    padding: 9px 15px;
+    border: 1px solid #eadde2;
+    border-radius: 4px;
+    background: #ffffff;
+    color: #66545c;
+    font-size: 13px;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
 
-        .category {
-            color: #df657c;
-            background: #fbe8ec;
+.action:hover {
+    background: #fff3f6;
+    border-color: #dba4b8;
+}
 
-            padding: 6px 12px;
+#likeBtn.liked {
+    background: #fff0f4;
+    border-color: #d97898;
+    color: #d65f82;
+}
 
-            border-radius: 20px;
+#saveBtn {
+    margin-left: 0;
+}
 
-            font-size: 13px;
-        }
+/* 댓글 영역 */
 
-        .detail-info h1 {
-            margin-top: 15px;
-            font-size: 28px;
-        }
+.comments-section {
+    display: none;
+    margin: 24px 0 35px;
+    padding: 24px;
+    border: 1px solid #f0e3e8;
+    border-radius: 6px;
+    background: #fffafb;
+}
 
-        .author {
-            color: #999;
-        }
+.comments-section.show {
+    display: block;
+}
 
-        .actions {
-            display: flex;
-            gap: 10px;
+.comments-section h2 {
+    margin: 0 0 18px;
+    color: #45343b;
+    font-size: 19px;
+    font-weight: 700;
+}
 
-            margin-top: 20px;
-        }
+.comment-item {
+    padding: 15px 0;
+    border-bottom: 1px solid #f0e8eb;
+}
 
-        .action {
-            padding: 10px 15px;
+.comment-name {
+    margin-bottom: 7px;
+    color: #5b424c;
+    font-size: 13px;
+    font-weight: 600;
+}
 
-            border: 1px solid #eee;
+.comment-text {
+    color: #55484d;
+    font-size: 14px;
+    line-height: 1.8;
+    overflow-wrap: anywhere;
+}
 
-            border-radius: 20px;
+.comment-time {
+    margin-top: 7px;
+    color: #aaa0a5;
+    font-size: 11px;
+}
 
-            background: white;
-        }
+.empty-comments {
+    padding: 12px 0;
+    color: #a69aa0;
+    font-size: 13px;
+}
 
-        .evaluation {
-            margin-top: 35px;
+.comment-input {
+    display: flex;
+    align-items: stretch;
+    gap: 8px;
+    margin-top: 18px;
+}
 
-            border-top: 1px solid #eee;
+.comment-input input {
+    flex: 1;
+    min-width: 0;
+    height: 42px;
+    padding: 0 13px;
+    border: 1px solid #eadde2;
+    border-radius: 4px;
+    outline: none;
+    background: #ffffff;
+    font-family: inherit;
+    font-size: 13px;
+}
 
-            padding-top: 25px;
-        }
+.comment-input input:focus {
+    border-color: #c77a96;
+}
 
-        .evaluation h2 {
-            font-size: 20px;
-        }
+.comment-input button {
+    min-width: 60px;
+    padding: 0 15px;
+    border: none;
+    border-radius: 4px;
+    background: #b76c88;
+    color: #ffffff;
+    font-family: inherit;
+    font-size: 13px;
+    cursor: pointer;
+}
 
-        .evaluation p {
-            margin: 15px 0;
-            color: #777;
-        }
+/* 작품 평가 및 개선 의견 */
 
-        @media (max-width: 700px) {
+.evaluation {
+    margin-top: 32px;
+    padding: 24px;
+    border: 1px solid #f0e3e8;
+    border-radius: 6px;
+    background: #ffffff;
+}
 
-            .detail-image {
-                width: calc(100% - 36px);
-                height: 330px;
-            }
+.evaluation h2 {
+    margin: 0 0 18px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid #f3e9ed;
+    color: #45343b;
+    font-size: 18px;
+    font-weight: 700;
+}
 
-            .detail-info {
-                padding: 0 18px 40px;
-            }
+.evaluation p {
+    margin: 12px 0;
+    color: #76656c;
+    font-size: 14px;
+    line-height: 1.9;
+}
 
-        }
+/* 모바일 화면 */
 
-    </style>
+@media (max-width: 700px) {
+    .detail-header {
+        height: 64px;
+        padding: 0 16px;
+    }
+
+    .detail-title {
+        margin-right: 40px;
+        font-size: 18px;
+    }
+
+    .detail-image {
+        width: calc(100% - 32px);
+        height: 280px;
+        margin: 18px auto 24px;
+        border-radius: 4px;
+    }
+
+    .detail-info {
+        padding: 0 16px 45px;
+    }
+
+    .detail-info h1 {
+        font-size: 24px;
+    }
+
+    .actions {
+        gap: 8px;
+        margin: 20px 0 25px;
+    }
+
+    .action {
+        padding: 9px 11px;
+        font-size: 12px;
+    }
+
+    .comments-section,
+    .evaluation {
+        padding: 18px;
+    }
+
+    .comment-input {
+        gap: 6px;
+    }
+
+    .comment-input button {
+        min-width: 52px;
+        padding: 0 10px;
+    }
+}
+</style>
 
 </head>
 
@@ -161,7 +337,12 @@
 
     <!-- 작품 이미지 -->
 
-    <div class="detail-image" id="detailImage"></div>
+    <img
+    class="detail-image"
+    id="detailImage"
+    src=""
+    alt="작품 이미지"
+>
 
 
     <!-- 작품 정보 -->
@@ -183,22 +364,42 @@
 
         <!-- 버튼 -->
 
-        <div class="actions">
 
-            <button class="action">
-                ❤️ 좋아요 32
-            </button>
+<!-- 좋아요, 댓글, 저장 버튼 -->
+<div class="actions">
+    <button class="action" id="likeBtn" type="button">
+        ♡ 좋아요 <span id="likeCount">32</span>
+    </button>
 
-            <button class="action">
-                💬 댓글 5
-            </button>
+    <button class="action" id="commentBtn" type="button">
+        💬 댓글 <span id="commentCount">0</span>
+    </button>
 
-            <button class="action">
-                🔖 저장
-            </button>
+    <button class="action" id="saveBtn" type="button"
+            onclick="toggleSave()">
+        🔖 저장
+    </button>
+</div>
 
-        </div>
+<!-- 댓글 영역 -->
+<div class="comments-section" id="commentsSection">
+    <h2>댓글</h2>
 
+    <div id="commentList"></div>
+
+    <div class="comment-input">
+        <input
+            type="text"
+            id="commentInput"
+            placeholder="댓글을 입력하세요..."
+            maxlength="500"
+        >
+
+        <button type="button" id="submitComment">
+            등록
+        </button>
+    </div>
+</div>       
 
         <!-- 평가 -->
 
@@ -247,48 +448,71 @@
 </div>
 <script>
 
-    // Lấy id từ đường link
     const params = new URLSearchParams(window.location.search);
 
     const id = params.get("id");
 
 
-    // Thông tin các tác phẩm
-    const works = {
-
-        1: {
-            category: "사진",
-            title: "노을지는 바다",
-            author: "김지은",
-            date: "2026.10.03",
-            image: "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=80"
-        },
-
-        2: {
-            category: "일러스트",
-            title: "꿈을 향해",
-            author: "박서연",
-            date: "2026.10.02",
-            image: "https://images.unsplash.com/photo-1577083552431-6e5fd01988a5?auto=format&fit=crop&w=1200&q=80"
-        },
-
-        3: {
-            category: "사진",
-            title: "고양이의 하루",
-            author: "이도현",
-            date: "2026.10.01",
-            image: "https://images.unsplash.com/photo-1518791841217-8f162f1e1131?auto=format&fit=crop&w=1200&q=80"
-        },
-
-        4: {
-            category: "디자인",
-            title: "빛과 그림자",
-            author: "최민지",
-            date: "2026.09.30",
-            image: "https://images.unsplash.com/photo-1494438639946-1ebd1d20bf85?auto=format&fit=crop&w=1200&q=80"
-        }
-
-    };
+   
+   
+const works = {
+    1: {
+        category: "사진",
+        title: "노을의 순간",
+        author: "김지은",
+        date: "2026.10.03",
+        image: "images/work1.jpg"
+    },
+    2: {
+        category: "일러스트",
+        title: "꿈을 향해",
+        author: "박서연",
+        date: "2026.10.02",
+        image: "images/work2.jpg"
+    },
+    3: {
+        category: "사진",
+        title: "고양이의 하루",
+        author: "이도현",
+        date: "2026.10.01",
+        image: "images/work3.jpg"
+    },
+    4: {
+        category: "일러스트",
+        title: "따뜻한 시선",
+        author: "최민지",
+        date: "2026.09.30",
+        image: "images/work4.jpg"
+    },
+    5: {
+        category: "영상",
+        title: "달빛 아래의 꿈",
+        author: "한유진",
+        date: "2026.09.28",
+        image: "images/work5.jpeg"
+    },
+    6: {
+        category: "디자인",
+        title: "일상의 색채",
+        author: "김하늘",
+        date: "2026.09.26",
+        image: "images/work6.jpg"
+    },
+    7: {
+        category: "일러스트",
+        title: "여름의 정원",
+        author: "윤서아",
+        date: "2026.09.24",
+        image: "images/work7.jpeg"
+    },
+    8: {
+        category: "사진",
+        title: "분홍빛 풍경",
+        author: "이서윤",
+        date: "2026.09.22",
+        image: "images/work8.jpeg"
+    }
+};
 
 
     // 선택한 작품 가져오기
@@ -307,9 +531,191 @@
 
 
     // 작품 이미지 변경
-    document.getElementById("detailImage").style.backgroundImage =
-        `url("${work.image}")`;
+   document.getElementById("detailImage").src = work.image;
+document.getElementById("detailImage").alt = work.title;
+// 저장 기능
+const saveBtn = document.getElementById("saveBtn");
 
+// 저장된 작품 목록 가져오기
+let savedWorks = JSON.parse(localStorage.getItem("savedWorks")) || [];
+
+// 현재 작품이 이미 저장되어 있는지 확인
+function updateSaveButton() {
+
+    if (savedWorks.includes(String(id))) {
+
+        saveBtn.innerHTML = "🔖 저장됨";
+        saveBtn.style.background = "#fbe8ec";
+        saveBtn.style.color = "#df657c";
+
+    } else {
+
+        saveBtn.innerHTML = "🔖 저장";
+        saveBtn.style.background = "white";
+        saveBtn.style.color = "#333";
+
+    }
+}
+
+// 저장 / 저장 취소
+function toggleSave() {
+
+    const currentId = String(id);
+
+    if (savedWorks.includes(currentId)) {
+
+        // 저장 취소
+        savedWorks = savedWorks.filter(item => item !== currentId);
+
+    } else {
+
+        // 저장
+        savedWorks.push(currentId);
+
+    }
+
+    // 브라우저에 저장
+    localStorage.setItem(
+        "savedWorks",
+        JSON.stringify(savedWorks)
+    );
+
+    updateSaveButton();
+}
+
+// 페이지 열었을 때 상태 확인
+updateSaveButton();
+
+/* 좋아요 기능 */
+
+const likeBtn = document.getElementById("likeBtn");
+const likeCount = document.getElementById("likeCount");
+
+const likeKey = "artworkLikes_" + id;
+const likedKey = "artworkLiked_" + id;
+
+let likes = Number(localStorage.getItem(likeKey) ?? 32);
+let liked = localStorage.getItem(likedKey) === "true";
+
+function updateLikeButton() {
+    likeCount.textContent = likes;
+    likeBtn.classList.toggle("liked", liked);
+    likeBtn.firstChild.textContent = liked
+        ? "♥ 좋아요 "
+        : "♡ 좋아요 ";
+}
+
+likeBtn.addEventListener("click", function () {
+    if (liked) {
+        likes = Math.max(0, likes - 1);
+        liked = false;
+    } else {
+        likes++;
+        liked = true;
+    }
+
+    localStorage.setItem(likeKey, likes);
+    localStorage.setItem(likedKey, liked);
+
+    updateLikeButton();
+});
+
+updateLikeButton();
+
+
+/* 댓글 기능 */
+
+const commentBtn = document.getElementById("commentBtn");
+const commentsSection = document.getElementById("commentsSection");
+const commentCount = document.getElementById("commentCount");
+const commentList = document.getElementById("commentList");
+const commentInput = document.getElementById("commentInput");
+const submitComment = document.getElementById("submitComment");
+
+const commentKey = "artworkComments_" + id;
+
+let comments = JSON.parse(
+    localStorage.getItem(commentKey) || "[]"
+);
+
+commentBtn.addEventListener("click", function () {
+    commentsSection.classList.toggle("show");
+
+    if (commentsSection.classList.contains("show")) {
+        commentsSection.scrollIntoView({
+            behavior: "smooth",
+            block: "nearest"
+        });
+
+        commentInput.focus();
+    }
+});
+
+function renderComments() {
+    commentList.replaceChildren();
+
+    if (comments.length === 0) {
+        const empty = document.createElement("p");
+        empty.className = "empty-comments";
+        empty.textContent = "아직 댓글이 없습니다.";
+        commentList.appendChild(empty);
+    }
+
+    comments.forEach(function (comment) {
+        const item = document.createElement("div");
+        item.className = "comment-item";
+
+        const name = document.createElement("div");
+        name.className = "comment-name";
+        name.textContent = comment.name;
+
+        const content = document.createElement("div");
+        content.className = "comment-text";
+        content.textContent = comment.text;
+
+        const time = document.createElement("div");
+        time.className = "comment-time";
+        time.textContent = comment.time;
+
+        item.append(name, content, time);
+        commentList.appendChild(item);
+    });
+
+    commentCount.textContent = comments.length;
+
+    localStorage.setItem(
+        commentKey,
+        JSON.stringify(comments)
+    );
+}
+
+function addComment() {
+    const text = commentInput.value.trim();
+
+    if (!text) {
+        commentInput.focus();
+        return;
+    }
+
+    comments.push({
+        name: "사용자",
+        text: text,
+        time: new Date().toLocaleString("ko-KR")
+    });
+
+    renderComments();
+    commentInput.value = "";
+}
+
+submitComment.addEventListener("click", addComment);
+
+commentInput.addEventListener("keydown", function (event) {
+    if (event.key === "Enter") {
+        addComment();
+    }
+});
+
+renderComments();
 </script>
 </body>
 
