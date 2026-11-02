@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>마이페이지</title>
+    <link rel="icon" type="image/png" href="./img/palette.png?rev=20261025">
 
     <!-- Google Material Symbols -->
     <link rel="stylesheet"
@@ -25,60 +26,51 @@
 <div class="app">
 
     <!-- HEADER -->
-    <header class="header">
+  <header class="header">
 
-        <div class="logo-area">
+    <div class="logo-area">
 
-            <span class="material-symbols-rounded logo-icon">
-                palette
-            </span>
+        <a href="index.html" class="brand-logo">
+            <img src="img/logo-header.png" alt="여백 로고">
+        </a>
 
-            <h1>마이페이지</h1>
+        <h1>마이페이지</h1>
 
-        </div>
+    </div>
 
-        <button class="search-btn">
+    <button class="search-btn" type="button" aria-label="설정">
+        <span class="material-symbols-rounded">
+            settings
+        </span>
+    </button>
 
-            <span class="material-symbols-rounded">
-                settings
-            </span>
-
-        </button>
-
-    </header>
+</header>
 
 
     <!-- MAIN -->
     <main class="mypage">
 
+       
         <!-- PROFILE -->
-        <section class="profile-card">
+<section class="profile-card">
 
-            <div class="profile-image">
+    <div class="profile-image" id="profileImage">
+        <span class="material-symbols-rounded">person</span>
+    </div>
 
-                <span class="material-symbols-rounded">
-                    person
-                </span>
+    <div class="profile-info">
+        <h2 id="displayName">hellokitty</h2>
+        <p id="displayIntro">여백 회원</p>
+        <span class="profile-id" id="displayEmail">
+            학생 작품 전시 회원
+        </span>
+    </div>
 
-            </div>
+    <a href="profile-edit.html" class="edit-profile">
+        프로필 수정
+    </a>
 
-            <div class="profile-info">
-
-                <h2>홍니</h2>
-
-                <p>Multimedia Design</p>
-
-                <span class="profile-id">
-                    학생 작품 전시 회원
-                </span>
-
-            </div>
-
-            <button class="edit-profile">
-                프로필 수정
-            </button>
-
-        </section>
+</section>
 
 
         <!-- MY ACTIVITY -->
@@ -92,7 +84,7 @@
 
                 <div class="activity-item">
 
-                    <strong>12</strong>
+                    <strong>9.2k</strong>
 
                     <span>좋아요</span>
 
@@ -318,6 +310,28 @@
     </nav>
 
 </div>
+<script>
+const savedName = localStorage.getItem("profileName");
+const savedIntro = localStorage.getItem("profileIntro");
+const savedEmail = localStorage.getItem("profileEmail");
+const savedAvatar = localStorage.getItem("profileAvatar");
 
+if (savedName) {
+    document.getElementById("displayName").textContent = savedName;
+}
+
+if (savedIntro) {
+    document.getElementById("displayIntro").textContent = savedIntro;
+}
+
+if (savedEmail) {
+    document.getElementById("displayEmail").textContent = savedEmail;
+}
+
+if (savedAvatar) {
+    document.getElementById("profileImage").innerHTML =
+        `<img src="${savedAvatar}" alt="프로필 사진">`;
+}
+</script>
 </body>
 </html>
