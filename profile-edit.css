@@ -1,0 +1,167 @@
+.profile-edit-main {
+    padding: 30px 20px 110px;
+}
+
+.edit-heading {
+    margin-bottom: 24px;
+}
+
+.edit-heading h2 {
+    font-size: 23px;
+    color: #40333a;
+}
+
+.edit-heading p {
+    color: #999;
+    font-size: 14px;
+}
+
+.edit-card {
+    background: #fff;
+    padding: 35px;
+    border-radius: 18px;
+    box-shadow: 0 5px 20px rgba(80, 50, 65, 0.05);
+}
+
+.avatar-edit {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.avatar-preview {
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    background: #f8e8ee;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    color: #bd718e;
+}
+
+.avatar-preview > span {
+    font-size: 48px;
+}
+
+.avatar-preview img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.photo-button {
+    margin-top: 12px;
+    color: #bd718e;
+    font-size: 13px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.edit-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+}
+
+.form-group label {
+    font-size: 14px;
+    font-weight: 600;
+    color: #51434a;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 14px;
+    border: 1px solid #eadde2;
+    border-radius: 9px;
+    font-family: inherit;
+    font-size: 14px;
+    outline: none;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: #bd718e;
+}
+
+.form-group textarea {
+    resize: vertical;
+}
+
+.edit-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    margin-top: 30px;
+}
+
+.cancel-button,
+.save-button {
+    padding: 12px 25px;
+    border-radius: 7px;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    font-family: inherit;
+}
+
+.cancel-button {
+    background: #f5f1f2;
+    color: #777;
+}
+
+.save-button {
+    background: #bd718e;
+    color: white;
+    border: none;
+}
+
+.save-button:hover {
+    background: #a95e7b;
+}
+
+@media (max-width: 600px) {
+    .edit-card {
+        padding: 22px 17px;
+    }
+}
+.profile-image {
+    width: 64px;
+    height: 64px;
+    min-width: 64px;
+    border-radius: 50%;
+    background: #f8e8ee;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.profile-image img {
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    display: block;
+}
+
+.profile-image .material-symbols-rounded {
+    font-size: 32px;
+    color: #bd718e;
+}

@@ -1,0 +1,154 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>프로필 수정 | 여백</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/profile-edit.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+<div class="app">
+
+    <header class="header">
+        <div class="logo-area">
+            <a href="index.html" class="brand-logo">
+                <img src="img/logo-header.png" alt="여백 로고">
+            </a>
+            <h1>프로필 수정</h1>
+        </div>
+    </header>
+
+    <main class="profile-edit-main">
+
+        <div class="edit-heading">
+            <h2>나의 프로필</h2>
+            <p>나를 소개하는 정보를 자유롭게 수정해 보세요.</p>
+        </div>
+
+        <section class="edit-card">
+
+            <div class="avatar-edit">
+                <div class="avatar-preview" id="avatarPreview">
+                    <span class="material-symbols-rounded">person</span>
+                </div>
+
+                <label for="avatarInput" class="photo-button">
+                    <span class="material-symbols-rounded">photo_camera</span>
+                    사진 변경
+                </label>
+
+                <input type="file" id="avatarInput" accept="image/*" hidden>
+            </div>
+
+            <div class="edit-form">
+
+                <div class="form-group">
+                    <label for="userName">이름</label>
+                    <input type="text" id="userName" placeholder="이름을 입력해 주세요.">
+                </div>
+
+                <div class="form-group">
+                    <label for="userIntro">자기소개</label>
+                    <textarea id="userIntro" rows="3"
+                        placeholder="나를 자유롭게 소개해 주세요."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="userEmail">이메일</label>
+                    <input type="email" id="userEmail" placeholder="이메일을 입력해 주세요.">
+                </div>
+
+                <div class="form-group">
+                    <label for="userPhone">연락처</label>
+                    <input type="tel" id="userPhone" placeholder="연락처를 입력해 주세요.">
+                </div>
+
+            </div>
+
+            <div class="edit-actions">
+                <a href="mypage.html" class="cancel-button">취소</a>
+                <button type="button" id="saveProfile" class="save-button">
+                    저장하기
+                </button>
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+<script>
+const nameInput = document.getElementById("userName");
+const introInput = document.getElementById("userIntro");
+const emailInput = document.getElementById("userEmail");
+const phoneInput = document.getElementById("userPhone");
+const avatarInput = document.getElementById("avatarInput");
+const avatarPreview = document.getElementById("avatarPreview");
+
+let avatarData = localStorage.getItem("profileAvatar") || "";
+
+function showAvatar() {
+    if (avatarData) {
+        avatarPreview.innerHTML = `<img src="${avatarData}" alt="프로필 사진">`;
+    }
+}
+
+nameInput.value = localStorage.getItem("profileName") || "hellokitty";
+introInput.value = localStorage.getItem("profileIntro") || "";
+emailInput.value = localStorage.getItem("profileEmail") || "";
+phoneInput.value = localStorage.getItem("profilePhone") || "";
+
+showAvatar();
+
+avatarInput.addEventListener("change", function () {
+    const file = this.files[0];
+
+    if (!file) return;
+
+    if (!file.type.startsWith("image/")) {
+        alert("이미지 파일을 선택해 주세요.");
+        return;
+    }
+
+    const reader = new FileReader();
+
+    reader.onload = function (event) {
+        avatarData = event.target.result;
+        showAvatar();
+    };
+
+    reader.readAsDataURL(file);
+});
+
+document.getElementById("saveProfile").addEventListener("click", function () {
+    if (!nameInput.value.trim()) {
+        alert("이름을 입력해 주세요.");
+        nameInput.focus();
+        return;
+    }
+
+    localStorage.setItem("profileName", nameInput.value.trim());
+    localStorage.setItem("profileIntro", introInput.value.trim());
+    localStorage.setItem("profileEmail", emailInput.value.trim());
+    localStorage.setItem("profilePhone", phoneInput.value.trim());
+
+    if (avatarData) {
+        localStorage.setItem("profileAvatar", avatarData);
+    }
+
+    alert("프로필이 저장되었습니다.");
+    location.href = "mypage.html";
+});
+</script>
+
+</body>
+</html>
+```
