@@ -1,562 +1,596 @@
+
 <!DOCTYPE html>
 <html lang="ko">
-
 <head>
-
     <meta charset="UTF-8">
-
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>작품 등록</title>
 
-    <!-- Google Material Symbols -->
-    <link rel="stylesheet"
-          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0">
-
-    <!-- Google Font -->
-    <link rel="preconnect"
-          href="https://fonts.googleapis.com">
-
-    <link rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossorigin>
-
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700&display=swap"
-          rel="stylesheet">
-
+    <link rel="icon" href="./img/palette.png">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <style>
-
         * {
             box-sizing: border-box;
+        }
+
+        html, body {
             margin: 0;
             padding: 0;
+            width: 100%;
+            min-height: 100%;
         }
-
 
         body {
+            background: #f6f3f3;
+            color: #45343b;
             font-family: 'Noto Sans KR', sans-serif;
-            background: #f7f5f5;
-            color: #333;
         }
 
-
+        /* 전체 페이지 */
         .register-page {
             width: 100%;
-            max-width: 700px;
+            max-width: 1100px;
             min-height: 100vh;
-            margin: auto;
-            background: white;
+            margin: 0 auto;
+            padding: 25px 35px 70px;
         }
 
-
-        /* ================= HEADER ================= */
-
+        /* 상단 로고 */
         .register-header {
-            height: 75px;
-
-            display: flex;
-            align-items: center;
-
-            padding: 0 22px;
-
-            border-bottom: 1px solid #eeeeee;
-        }
-
-
-        .back-btn {
-            border: none;
-            background: none;
-
-            cursor: pointer;
-
-            display: flex;
-            align-items: center;
-        }
-
-
-        .back-btn span {
-            font-size: 30px;
-        }
-
-
-        .header-title {
-            flex: 1;
-
-            text-align: center;
-
-            font-size: 20px;
-
-            font-weight: 600;
-
-            margin-right: 30px;
-        }
-
-
-        /* ================= CONTENT ================= */
-
-        .content {
-            padding: 25px 22px 40px;
-        }
-
-
-        .intro {
-            margin-bottom: 25px;
-        }
-
-
-        .intro h1 {
-            font-size: 25px;
-
-            margin-bottom: 7px;
-        }
-
-
-        .intro p {
-            color: #999;
-
-            font-size: 14px;
-        }
-
-
-        /* ================= IMAGE ================= */
-
-        .image-box {
             width: 100%;
-            height: 230px;
-
-            border-radius: 16px;
-
-            background: #faf7f7;
-
-            border: 1px dashed #ddd;
-
             display: flex;
-            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            margin-bottom: 30px;
+        }
 
+        .register-logo img {
+            display: block;
+            width: 58px;
+            height: auto;
+            object-fit: contain;
+        }
+
+        /* 페이지 제목 */
+        .page-title {
+            margin: 0 0 35px;
+            text-align: center;
+            font-size: 28px;
+            font-weight: 700;
+            color: #45343b;
+        }
+
+        /* 사진 영역 */
+        .photo-grid {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 16px;
+            align-items: start;
+            width: 100%;
+            max-width: 680px;
+            margin: 0 auto;
+        }
+
+        .photo-item {
+            min-width: 0;
+        }
+
+        .photo-box {
+            position: relative;
+            display: flex;
             align-items: center;
             justify-content: center;
-
-            cursor: pointer;
-
+            width: 100%;
+            aspect-ratio: 0.85;
             overflow: hidden;
-
-            margin-bottom: 25px;
+            border: 2px dashed #d8cdd1;
+            border-radius: 20px;
+            background: #ffffff;
+            cursor: pointer;
         }
 
-
-        .image-box .material-symbols-rounded {
-            font-size: 45px;
-
-            color: #d98696;
-
-            margin-bottom: 10px;
+        .photo-item:first-child .photo-box {
+            border: 2px solid #dba4b8;
         }
 
-
-        .image-box p {
-            color: #999;
-
-            font-size: 14px;
-        }
-
-
-        #preview {
+        .photo-box img {
+            display: block;
             width: 100%;
             height: 100%;
-
             object-fit: cover;
+        }
 
+        .placeholder {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            color: #888888;
+            font-size: 20px;
+        }
+
+        .placeholder .plus {
+            color: #d98fa4;
+            font-size: 38px;
+            font-weight: 400;
+        }
+
+        .photo-input {
             display: none;
         }
 
+        /* 사진 설명 */
+        .photo-note {
+            width: 100%;
+            min-height: 100px;
+            margin-top: 12px;
+            padding: 12px;
+            resize: vertical;
+            border: 1px solid #e5dadd;
+            border-radius: 12px;
+            background: #ffffff;
+            color: #555555;
+            font-family: inherit;
+            font-size: 12px;
+            line-height: 1.6;
+            outline: none;
+        }
 
-        /* ================= FORM ================= */
+        .photo-note:focus {
+            border-color: #dba4b8;
+        }
+
+        .photo-note::placeholder {
+            color: #aaaaaa;
+        }
+
+        /* 사진 추가 버튼 */
+        .add-photo {
+            width: 100%;
+            aspect-ratio: 0.85;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: none;
+            border-radius: 20px;
+            background: #e8a9b9;
+            color: white;
+            font-size: 55px;
+            font-weight: 300;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .add-photo:hover {
+            background: #d98fa4;
+        }
+
+        /* 안내 문구 */
+        .help-text {
+            max-width: 680px;
+            margin: 15px auto 0;
+            color: #998a90;
+            font-size: 12px;
+            line-height: 1.7;
+            text-align: center;
+        }
+
+        /* 작품 정보 */
+        .section-title {
+            width: 100%;
+            max-width: 680px;
+            margin: 45px auto 20px;
+            font-size: 21px;
+            font-weight: 700;
+            color: #45343b;
+        }
+
+        .form-area {
+            width: 100%;
+            max-width: 680px;
+            margin: 0 auto;
+        }
 
         .form-group {
             margin-bottom: 20px;
         }
 
-
         .form-group label {
             display: block;
-
-            font-size: 15px;
-
+            margin-bottom: 9px;
+            font-size: 14px;
             font-weight: 600;
-
-            margin-bottom: 8px;
+            color: #594650;
         }
 
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            display: block;
+            width: 100%;
+            padding: 14px;
+            border: 1px solid #e5dadd;
+            border-radius: 9px;
+            background: white;
+            color: #45343b;
+            font-family: inherit;
+            font-size: 14px;
+            outline: none;
+        }
+
+        .form-group textarea {
+            min-height: 110px;
+            resize: vertical;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: #dba4b8;
+        }
 
         .required {
-            color: #df657c;
+            color: #d67d75;
         }
 
-
-        input,
-        select,
-        textarea {
-
+        /* 등록 버튼 */
+        .submit-btn {
+            display: block;
             width: 100%;
-
-            border: 1px solid #e5e5e5;
-
-            border-radius: 10px;
-
-            padding: 13px 14px;
-
-            font-family: inherit;
-
-            font-size: 14px;
-
-            outline: none;
-
-            background: white;
-        }
-
-
-        input:focus,
-        select:focus,
-        textarea:focus {
-
-            border-color: #df9aa7;
-        }
-
-
-        textarea {
-
-            height: 130px;
-
-            resize: none;
-
-            line-height: 1.6;
-        }
-
-
-        /* ================= BUTTON ================= */
-
-        .register-btn {
-
-            width: 100%;
-
-            height: 52px;
-
+            max-width: 680px;
+            height: 54px;
+            margin: 25px auto 0;
             border: none;
-
-            border-radius: 12px;
-
-            background: #df657c;
-
+            border-radius: 9px;
+            background: #d98fa4;
             color: white;
-
+            font-family: inherit;
             font-size: 16px;
-
             font-weight: 600;
-
             cursor: pointer;
-
-            margin-top: 10px;
+            transition: 0.2s;
         }
 
-
-        .register-btn:hover {
-            background: #d85770;
+        .submit-btn:hover {
+            background: #c97f96;
         }
 
-
-        /* ================= MOBILE ================= */
-
+        /* 작은 화면 */
         @media (max-width: 700px) {
-
-            .content {
-                padding: 22px 18px 35px;
+            .register-page {
+                padding: 20px 18px 50px;
             }
 
-            .image-box {
-                height: 210px;
+            .register-header {
+                margin-bottom: 25px;
             }
 
+            .register-logo img {
+                width: 50px;
+            }
+
+            .page-title {
+                margin-bottom: 25px;
+                font-size: 25px;
+            }
+
+            .photo-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 14px;
+            }
+
+            .photo-box,
+            .add-photo {
+                border-radius: 16px;
+            }
+
+            .placeholder {
+                font-size: 17px;
+            }
+
+            .placeholder .plus {
+                font-size: 32px;
+            }
+
+            .photo-note {
+                min-height: 85px;
+                font-size: 11px;
+            }
+
+            .section-title {
+                margin-top: 35px;
+            }
         }
+        /* 로고 가운데 정렬 */
+.register-header {
+    display: flex;
+    justify-content: center !important;
+    align-items: center;
+    width: 100%;
+    margin: 0 auto 25px;
+    padding: 0;
+}
 
+.register-logo {
+    margin: 0 auto;
+}
     </style>
-
 </head>
-
 
 <body>
 
-
 <div class="register-page">
 
-
-    <!-- ================= HEADER ================= -->
-
+    <!-- 상단 로고 -->
     <header class="register-header">
-
-        <button class="back-btn"
-                onclick="history.back()">
-
-            <span class="material-symbols-rounded">
-                arrow_back
-            </span>
-
-        </button>
-
-
-        <h1 class="header-title">
-            작품 등록
-        </h1>
-
+        <a href="index.html" class="register-logo">
+            <img src="./img/logo-header.png" alt="여백">
+        </a>
     </header>
 
+    <h1 class="page-title">작품 등록</h1>
 
+    <!-- 사진 등록 영역 -->
+    <div class="photo-grid" id="photoGrid">
 
-    <!-- ================= CONTENT ================= -->
-
-    <main class="content">
-
-
-        <div class="intro">
-
-            <h1>
-                나의 작품을 소개해보세요 🎨
-            </h1>
-
-            <p>
-                작품 정보를 입력하고 전시회에 등록해보세요.
-            </p>
-
+        <!-- 대표 사진 -->
+        <div class="photo-item">
+            <label class="photo-box" for="photo0">
+                <div class="placeholder" id="placeholder0">
+                    <span>대표 사진</span>
+                    <span class="plus">+</span>
+                </div>
+                <img id="preview0" style="display:none" alt="대표 사진 미리보기">
+            </label>
+            <input class="photo-input" type="file" id="photo0" accept="image/*">
         </div>
 
-
-
-        <!-- ================= IMAGE ================= -->
-
-        <div class="image-box"
-             onclick="document.getElementById('imageInput').click()">
-
-            <span class="material-symbols-rounded"
-                  id="uploadIcon">
-
-                add_photo_alternate
-
-            </span>
-
-
-            <p id="uploadText">
-                작품 이미지를 선택해주세요
-            </p>
-
-
-            <img id="preview">
-
+        <!-- 추가 사진 1 -->
+        <div class="photo-item">
+            <label class="photo-box" for="photo1">
+                <div class="placeholder" id="placeholder1">
+                    <span class="plus">+</span>
+                </div>
+                <img id="preview1" style="display:none" alt="추가 사진 미리보기">
+            </label>
+            <input class="photo-input" type="file" id="photo1" accept="image/*">
+            <textarea class="photo-note" id="note1" placeholder="이 사진에 대한 기록을 남겨보세요"></textarea>
         </div>
 
+        <!-- 추가 사진 2 -->
+        <div class="photo-item">
+            <label class="photo-box" for="photo2">
+                <div class="placeholder" id="placeholder2">
+                    <span class="plus">+</span>
+                </div>
+                <img id="preview2" style="display:none" alt="추가 사진 미리보기">
+            </label>
+            <input class="photo-input" type="file" id="photo2" accept="image/*">
+            <textarea class="photo-note" id="note2" placeholder="이 사진에 대한 기록을 남겨보세요"></textarea>
+        </div>
 
-        <input
-            type="file"
-            id="imageInput"
-            accept="image/*"
-            style="display:none"
-        >
+        <!-- 사진 추가 버튼 -->
+        <button class="add-photo" type="button" id="addPhoto">+</button>
 
+    </div>
 
+    <p class="help-text">
+        대표 사진은 작품 목록에 표시됩니다. 추가 사진과 기록을 함께 등록할 수 있습니다.
+    </p>
 
-        <!-- ================= FORM ================= -->
+    <!-- 작품 정보 -->
+    <h2 class="section-title">작품 정보</h2>
+
+    <div class="form-area">
 
         <div class="form-group">
-
-            <label>
-                작품명 <span class="required">*</span>
-            </label>
-
-            <input
-                type="text"
-                id="title"
-                placeholder="작품명을 입력해주세요"
-            >
-
+            <label for="workTitle">작품명 <span class="required">*</span></label>
+            <input type="text" id="workTitle" placeholder="작품명을 입력해주세요">
         </div>
 
-
-
         <div class="form-group">
-
-            <label>
-                작가명 <span class="required">*</span>
-            </label>
-
-            <input
-                type="text"
-                id="author"
-                placeholder="작가명을 입력해주세요"
-            >
-
+            <label for="workAuthor">작가명 <span class="required">*</span></label>
+            <input type="text" id="workAuthor" placeholder="작가명을 입력해주세요">
         </div>
 
-
-
         <div class="form-group">
-
-            <label>
-                카테고리 <span class="required">*</span>
-            </label>
-
-            <select id="category">
-
-                <option value="">
-                    카테고리를 선택해주세요
-                </option>
-
-                <option value="회화">
-                    회화
-                </option>
-
-                <option value="사진">
-                    사진
-                </option>
-
-                <option value="디자인">
-                    디자인
-                </option>
-
-                <option value="영상">
-                    영상
-                </option>
-
-                <option value="기타">
-                    기타
-                </option>
-
+            <label for="workCategory">카테고리 <span class="required">*</span></label>
+            <select id="workCategory">
+                <option value="">카테고리를 선택해주세요</option>
+                <option value="사진">사진</option>
+                <option value="디자인">디자인</option>
+                <option value="일러스트">일러스트</option>
+                <option value="회화">회화</option>
+                <option value="영상">영상</option>
+                <option value="기타">기타</option>
             </select>
-
         </div>
-
-
 
         <div class="form-group">
-
-            <label>
-                작품 설명
-            </label>
-
-            <textarea
-                id="description"
-                placeholder="작품에 대한 설명을 작성해주세요."
-            ></textarea>
-
+            <label for="workDescription">작품 소개</label>
+            <textarea id="workDescription" placeholder="작품에 대한 이야기를 들려주세요"></textarea>
         </div>
 
+    </div>
 
-
-        <!-- ================= BUTTON ================= -->
-
-        <button class="register-btn"
-                onclick="registerWork()">
-
-            작품 등록하기
-
-        </button>
-
-
-    </main>
+    <button class="submit-btn" type="button" onclick="registerWork()">
+        작품 등록하기
+    </button>
 
 </div>
 
-
-
-<!-- ================= JAVASCRIPT ================= -->
-
 <script>
+    // 등록된 사진 목록
+    let photoFiles = [];
 
-    // 이미지 미리보기
+    // 사진 미리보기 연결
+    function connectPhoto(index) {
+        const input = document.getElementById("photo" + index);
+        const preview = document.getElementById("preview" + index);
+        const placeholder = document.getElementById("placeholder" + index);
 
-    document
-        .getElementById("imageInput")
-        .addEventListener("change", function(event) {
+        input.addEventListener("change", function () {
+            const file = this.files[0];
 
-            const file = event.target.files[0];
+            if (!file) return;
 
-            if (!file) {
+            if (!file.type.startsWith("image/")) {
+                alert("이미지 파일만 등록할 수 있습니다.");
+                this.value = "";
                 return;
             }
 
-            const preview =
-                document.getElementById("preview");
+            photoFiles[index] = file;
 
-            const uploadIcon =
-                document.getElementById("uploadIcon");
-
-            const uploadText =
-                document.getElementById("uploadText");
-
-
-            preview.src =
-                URL.createObjectURL(file);
-
+            preview.src = URL.createObjectURL(file);
             preview.style.display = "block";
-
-            uploadIcon.style.display = "none";
-
-            uploadText.style.display = "none";
-
+            placeholder.style.display = "none";
         });
-
-
-
-    // 작품 등록
-
-    function registerWork() {
-
-        const title =
-            document.getElementById("title").value;
-
-        const author =
-            document.getElementById("author").value;
-
-        const category =
-            document.getElementById("category").value;
-
-
-        // 필수 입력 확인
-
-        if (title === "") {
-
-            alert("작품명을 입력해주세요.");
-
-            return;
-        }
-
-
-        if (author === "") {
-
-            alert("작가명을 입력해주세요.");
-
-            return;
-        }
-
-
-        if (category === "") {
-
-            alert("카테고리를 선택해주세요.");
-
-            return;
-        }
-
-
-        // 등록 완료
-
-        alert("작품이 등록되었습니다! 🎉");
-
-        location.href = "index.html";
-
     }
 
+    // 처음부터 있는 사진 3개 연결
+    connectPhoto(0);
+    connectPhoto(1);
+    connectPhoto(2);
+
+    const photoGrid = document.getElementById("photoGrid");
+    const addButton = document.getElementById("addPhoto");
+
+    let photoCount = 3;
+
+    // 새로운 사진 영역 만들기
+    function createPhotoItem(index) {
+        const item = document.createElement("div");
+        item.className = "photo-item";
+
+        item.innerHTML = `
+            <label class="photo-box" for="photo${index}">
+                <div class="placeholder" id="placeholder${index}">
+                    <span class="plus">+</span>
+                </div>
+                <img id="preview${index}" style="display:none" alt="추가 사진 미리보기">
+            </label>
+
+            <input class="photo-input" type="file" id="photo${index}" accept="image/*">
+
+            <textarea
+                class="photo-note"
+                id="note${index}"
+                placeholder="이 사진에 대한 기록을 남겨보세요"
+            ></textarea>
+        `;
+
+        const input = item.querySelector("input");
+        const preview = item.querySelector("img");
+        const placeholder = item.querySelector(".placeholder");
+
+        input.addEventListener("change", function () {
+            const file = this.files[0];
+
+            if (!file) return;
+
+            if (!file.type.startsWith("image/")) {
+                alert("이미지 파일만 등록할 수 있습니다.");
+                this.value = "";
+                return;
+            }
+
+            photoFiles[index] = file;
+
+            preview.src = URL.createObjectURL(file);
+            preview.style.display = "block";
+            placeholder.style.display = "none";
+        });
+
+        return item;
+    }
+
+    // 사진 추가 버튼
+    addButton.addEventListener("click", function () {
+        if (photoCount >= 10) {
+            alert("사진은 최대 10장까지 등록할 수 있습니다.");
+            return;
+        }
+
+        const newItem = createPhotoItem(photoCount);
+        photoGrid.insertBefore(newItem, addButton);
+
+        photoCount++;
+    });
+
+    // 사진을 저장 가능한 형식으로 변환
+    function readFile(file) {
+        return new Promise((resolve, reject) => {
+            const reader = new FileReader();
+
+            reader.onload = () => resolve(reader.result);
+            reader.onerror = () => reject(reader.error);
+
+            reader.readAsDataURL(file);
+        });
+    }
+
+    // 작품 등록
+    async function registerWork() {
+        const title = document.getElementById("workTitle").value.trim();
+        const author = document.getElementById("workAuthor").value.trim();
+        const category = document.getElementById("workCategory").value;
+        const description = document.getElementById("workDescription").value.trim();
+
+        if (!photoFiles[0]) {
+            alert("대표 사진을 등록해주세요.");
+            return;
+        }
+
+        if (!title || !author || !category) {
+            alert("필수 작품 정보를 입력해주세요.");
+            return;
+        }
+
+        try {
+            const images = [];
+
+            for (let i = 0; i < photoCount; i++) {
+                if (!photoFiles[i]) continue;
+
+                const noteElement = document.getElementById("note" + i);
+
+                images.push({
+                    file: await readFile(photoFiles[i]),
+                    note: noteElement ? noteElement.value.trim() : "",
+                    isMain: i === 0
+                });
+            }
+
+            const works = JSON.parse(
+                localStorage.getItem("userWorks") || "[]"
+            );
+
+            const newWork = {
+                title: title,
+                author: author,
+                category: category,
+                description: description,
+                file: images[0].file,
+                fileType: "image",
+                images: images,
+                date: new Date().toLocaleDateString("ko-KR")
+            };
+
+            works.push(newWork);
+
+            localStorage.setItem("userWorks", JSON.stringify(works));
+
+            alert("작품이 등록되었습니다!");
+            location.href = "index.html";
+
+        } catch (error) {
+            alert("사진 용량이 너무 큽니다. 사진 크기를 줄인 뒤 다시 등록해주세요.");
+            console.error(error);
+        }
+    }
 </script>
 
-
 </body>
-
 </html>
