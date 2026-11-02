@@ -457,3 +457,107 @@
 .work-main {
     padding-bottom: 110px;
 }
+.logo {
+    width: 110px;
+    height: 58px;
+    object-fit: contain;
+    display: block;
+}
+/* 동영상 작품 미리보기 */
+
+.work-image-wrap video {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+}
+ /* 작품 4개 등록 */
+
+.photo-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+    margin-top: 20px;
+}
+
+.photo-item {
+    min-width: 0;
+    padding: 12px;
+    border: 1px solid #f0e1e6;
+    border-radius: 12px;
+    background: #fffafb;
+}
+
+.photo-box {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border: 1px dashed #df9aa7;
+    border-radius: 10px;
+    background: #fff6f8;
+    cursor: pointer;
+}
+
+.photo-box .plus-icon {
+    font-size: 38px;
+    color: #d98696;
+}
+
+.photo-box .upload-label {
+    position: absolute;
+    bottom: 12px;
+    color: #b77b8d;
+    font-size: 12px;
+}
+
+.photo-box img,
+.photo-box video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    background: #222;
+}
+
+.photo-item input[type="file"] {
+    display: none;
+}
+
+.photo-fields {
+    margin-top: 12px;
+}
+
+.photo-fields input,
+.photo-fields select,
+.photo-fields textarea {
+    margin-bottom: 9px;
+    padding: 10px;
+    font-size: 12px;
+    border-radius: 7px;
+}
+
+.photo-fields textarea {
+    height: 65px;
+}
+
+.photo-number {
+    margin-bottom: 10px;
+    color: #b76c88;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+@media (max-width: 400px) {
+    .photo-grid {
+        gap: 10px;
+    }
+
+    .photo-item {
+        padding: 8px;
+    }
+}
