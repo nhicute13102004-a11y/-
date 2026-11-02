@@ -1,722 +1,508 @@
 <!DOCTYPE html>
 <html lang="ko">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>작품 상세</title>
+<link rel="icon" href="./img/palette.png">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-    <title>작품 상세</title>
-
-    <link rel="stylesheet"
-          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0">
-
-    <link rel="stylesheet" href="style.css">
-
-    <style>
-        /* 작품 상세 페이지 */
-
-.detail-header {
-    height: 72px;
-    display: flex;
-    align-items: center;
-    padding: 0 30px;
-    background: #fffafb;
-    border-bottom: 1px solid #f0e5e9;
-}
-
-.back-btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 40px;
-    height: 40px;
-    border: none;
-    background: transparent;
-    cursor: pointer;
-}
-
-.back-btn span {
-    font-size: 28px;
-    color: #45343b;
-}
-
-.detail-title {
-    flex: 1;
-    margin: 0 40px 0 0;
-    text-align: center;
-    font-size: 20px;
-    font-weight: 600;
-    color: #45343b;
-}
-
-/* 작품 이미지 */
-
-.detail-image {
-    display: block;
-    width: calc(100% - 60px);
-    height: 520px;
-    margin: 30px auto;
-    border-radius: 12px;
-    object-fit: contain;
-    object-position: center;
-    background-color: #f8f5f5;
-}
-
-@media (max-width: 700px) {
-    .detail-image {
-        width: calc(100% - 36px);
-        height: 420px;
-    }
-}
-
-/* 작품 정보 */
-
-.detail-info {
-    padding: 0 30px 60px;
-    color: #45343b;
-}
-
-.detail-info .category {
-    display: inline-block;
-    padding: 6px 12px;
-    border-radius: 3px;
-    background: #fbe8ee;
-    color: #c75c83;
-    font-size: 12px;
-}
-
-.detail-info h1 {
-    margin: 16px 0 8px;
-    font-size: 28px;
-    font-weight: 700;
-    line-height: 1.5;
-}
-
-.detail-info .author {
-    margin: 0;
-    color: #9b8b91;
-    font-size: 13px;
-    line-height: 1.8;
-}
-
-/* 작품 기능 버튼 */
-
-.actions {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 10px;
-    margin: 22px 0 30px;
-}
-
-.action {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 5px;
-    min-height: 38px;
-    padding: 9px 15px;
-    border: 1px solid #eadde2;
-    border-radius: 4px;
-    background: #ffffff;
-    color: #66545c;
-    font-size: 13px;
-    cursor: pointer;
-    transition: 0.2s ease;
-}
-
-.action:hover {
-    background: #fff3f6;
-    border-color: #dba4b8;
-}
-
-#likeBtn.liked {
-    background: #fff0f4;
-    border-color: #d97898;
-    color: #d65f82;
-}
-
-#saveBtn {
-    margin-left: 0;
-}
-
-/* 댓글 영역 */
-
-.comments-section {
-    display: none;
-    margin: 24px 0 35px;
-    padding: 24px;
-    border: 1px solid #f0e3e8;
-    border-radius: 6px;
-    background: #fffafb;
-}
-
-.comments-section.show {
-    display: block;
-}
-
-.comments-section h2 {
-    margin: 0 0 18px;
-    color: #45343b;
-    font-size: 19px;
-    font-weight: 700;
-}
-
-.comment-item {
-    padding: 15px 0;
-    border-bottom: 1px solid #f0e8eb;
-}
-
-.comment-name {
-    margin-bottom: 7px;
-    color: #5b424c;
-    font-size: 13px;
-    font-weight: 600;
-}
-
-.comment-text {
-    color: #55484d;
-    font-size: 14px;
-    line-height: 1.8;
-    overflow-wrap: anywhere;
-}
-
-.comment-time {
-    margin-top: 7px;
-    color: #aaa0a5;
-    font-size: 11px;
-}
-
-.empty-comments {
-    padding: 12px 0;
-    color: #a69aa0;
-    font-size: 13px;
-}
-
-.comment-input {
-    display: flex;
-    align-items: stretch;
-    gap: 8px;
-    margin-top: 18px;
-}
-
-.comment-input input {
-    flex: 1;
-    min-width: 0;
-    height: 42px;
-    padding: 0 13px;
-    border: 1px solid #eadde2;
-    border-radius: 4px;
-    outline: none;
-    background: #ffffff;
-    font-family: inherit;
-    font-size: 13px;
-}
-
-.comment-input input:focus {
-    border-color: #c77a96;
-}
-
-.comment-input button {
-    min-width: 60px;
-    padding: 0 15px;
-    border: none;
-    border-radius: 4px;
-    background: #b76c88;
-    color: #ffffff;
-    font-family: inherit;
-    font-size: 13px;
-    cursor: pointer;
-}
-
-/* 작품 평가 및 개선 의견 */
-
-.evaluation {
-    margin-top: 32px;
-    padding: 24px;
-    border: 1px solid #f0e3e8;
-    border-radius: 6px;
-    background: #ffffff;
-}
-
-.evaluation h2 {
-    margin: 0 0 18px;
-    padding-bottom: 14px;
-    border-bottom: 1px solid #f3e9ed;
-    color: #45343b;
-    font-size: 18px;
-    font-weight: 700;
-}
-
-.evaluation p {
-    margin: 12px 0;
-    color: #76656c;
-    font-size: 14px;
-    line-height: 1.9;
-}
-
-/* 모바일 화면 */
-
-@media (max-width: 700px) {
-    .detail-header {
-        height: 64px;
-        padding: 0 16px;
-    }
-
-    .detail-title {
-        margin-right: 40px;
-        font-size: 18px;
-    }
-
-    .detail-image {
-        width: calc(100% - 32px);
-        height: 280px;
-        margin: 18px auto 24px;
-        border-radius: 4px;
-    }
-
-    .detail-info {
-        padding: 0 16px 45px;
-    }
-
-    .detail-info h1 {
-        font-size: 24px;
-    }
-
-    .actions {
-        gap: 8px;
-        margin: 20px 0 25px;
-    }
-
-    .action {
-        padding: 9px 11px;
-        font-size: 12px;
-    }
-
-    .comments-section,
-    .evaluation {
-        padding: 18px;
-    }
-
-    .comment-input {
-        gap: 6px;
-    }
-
-    .comment-input button {
-        min-width: 52px;
-        padding: 0 10px;
-    }
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Noto Sans KR',sans-serif;background:#f7f5f5;color:#333}
+.page{max-width:850px;min-height:100vh;margin:auto;background:white;padding-bottom:40px}
+.header{height:75px;display:flex;align-items:center;padding:0 22px;border-bottom:1px solid #eee}
+.back{border:0;background:none;font-size:28px;cursor:pointer}
+.head-title{flex:1;text-align:center;margin-right:28px;font-size:19px}
+main{padding:22px}
+.media{min-height:240px;display:flex;justify-content:center;align-items:center;background:#f8f3f4;border-radius:10px;overflow:hidden}
+.media img,.media video{width:100%;max-height:520px;object-fit:contain}
+.media video{background:#222}
+.info{padding:20px 2px;border-bottom:1px solid #eee}
+.category{display:inline-block;padding:5px 11px;border-radius:20px;background:#fff0f3;color:#c86d80;font-size:12px;margin-bottom:10px}
+h2{font-size:23px;margin-bottom:8px}
+.author{color:#888;font-size:13px}
+.description{margin-top:14px;color:#666;font-size:14px;line-height:1.8;white-space:pre-wrap}
+.actions{display:flex;gap:22px;padding:16px 2px;border-bottom:1px solid #eee}
+.action{display:flex;align-items:center;gap:6px;border:0;background:none;color:#777;font:inherit;cursor:pointer}
+.active{color:#df657c}
+section{padding:20px 2px;border-bottom:1px solid #eee}
+section h3{font-size:17px;margin-bottom:13px}
+.summary{font-size:13px;color:#999;margin-bottom:10px}
+.stars{display:flex;gap:5px}
+.star{border:0;background:none;color:#ddd;font-size:27px;cursor:pointer}
+.star.on{color:#e7a84e}
+.comment-row{display:flex;gap:8px}
+.comment-row input{flex:1;min-width:0;padding:11px;border:1px solid #eadde0;border-radius:8px;font:inherit;font-size:13px}
+.comment-row button{border:0;border-radius:8px;padding:0 15px;background:#df8798;color:white;cursor:pointer}
+.comment{padding:12px 0;border-bottom:1px solid #f2eeee;font-size:13px;line-height:1.6}
+.date{display:block;color:#aaa;font-size:11px;margin-top:3px}
+.related{margin:23px 0 13px;font-size:18px}
+.related-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}
+.card{overflow:hidden;border:1px solid #f0e6e8;border-radius:10px;text-decoration:none;color:inherit}
+.thumb{width:100%;height:145px;object-fit:cover;background:#f8f3f4}
+.card-info{padding:10px}
+.card-info b{display:block;font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.card-info span{display:block;margin-top:4px;color:#999;font-size:11px}
+.empty{grid-column:1/-1;text-align:center;padding:20px;color:#aaa;background:#fcf9fa;font-size:13px}
+@media(max-width:600px){
+main{padding:16px}
+.thumb{height:120px}
 }
 </style>
-
 </head>
 
-
 <body>
+<div class="page">
 
-<div class="app">
+<header class="header">
+<button class="back" onclick="history.back()">‹</button>
+<h1 class="head-title">작품 상세</h1>
+</header>
 
-    <!-- 상단 -->
+<main>
 
-    <header class="detail-header">
+<div class="media" id="media">
+<img id="detailImage" alt="작품 이미지" style="display:none">
+<video id="detailVideo" controls playsinline preload="metadata" style="display:none"></video>
+</div>
 
-        <button class="back-btn" onclick="history.back()">
+<div class="info">
+<span class="category" id="category"></span>
+<h2 id="title"></h2>
+<p class="author" id="author"></p>
+<p class="description" id="description"></p>
+</div>
 
-            <span class="material-symbols-rounded">
-                arrow_back
-            </span>
+<div class="actions">
 
-        </button>
+<button class="action" id="likeBtn">
+<span class="material-symbols-rounded">favorite</span>
+<span id="likeCount">0</span>
+</button>
 
-        <h1 class="detail-title">
-            작품 상세
-        </h1>
+<button class="action" id="commentBtn">
+<span class="material-symbols-rounded">chat_bubble</span>
+<span id="commentCount">0</span>
+</button>
 
-    </header>
+<button class="action" id="saveBtn">
+<span class="material-symbols-rounded">bookmark</span>
+저장
+</button>
 
+</div>
 
-    <!-- 작품 이미지 -->
+<section>
+<h3>작품 평가</h3>
 
-    <img
-    class="detail-image"
-    id="detailImage"
-    src=""
-    alt="작품 이미지"
->
-
-
-    <!-- 작품 정보 -->
-
-    <section class="detail-info">
-
-       <span class="category" id="detailCategory">
-    사진
-</span>
-
-<h1 id="detailTitle">
-    노을지는 바다
-</h1>
-
-<p class="author" id="detailAuthor">
-    김지은 · 2026.10.03
+<p class="summary">
+평균 별점 <b id="average">0.0</b> / 5 ·
+<span id="ratingCount">0</span>명 참여
 </p>
 
-
-        <!-- 버튼 -->
-
-
-<!-- 좋아요, 댓글, 저장 버튼 -->
-<div class="actions">
-    <button class="action" id="likeBtn" type="button">
-        ♡ 좋아요 <span id="likeCount">32</span>
-    </button>
-
-    <button class="action" id="commentBtn" type="button">
-        💬 댓글 <span id="commentCount">0</span>
-    </button>
-
-    <button class="action" id="saveBtn" type="button"
-            onclick="toggleSave()">
-        🔖 저장
-    </button>
+<div class="stars" id="stars">
+<button class="star" data-star="1">★</button>
+<button class="star" data-star="2">★</button>
+<button class="star" data-star="3">★</button>
+<button class="star" data-star="4">★</button>
+<button class="star" data-star="5">★</button>
 </div>
 
-<!-- 댓글 영역 -->
-<div class="comments-section" id="commentsSection">
-    <h2>댓글</h2>
+<p id="ratingMessage" class="summary" style="margin-top:8px">
+작품에 별점을 남겨주세요.
+</p>
+</section>
 
-    <div id="commentList"></div>
+<section id="commentsSection">
+<h3>댓글 <span id="commentHeadingCount">0</span></h3>
 
-    <div class="comment-input">
-        <input
-            type="text"
-            id="commentInput"
-            placeholder="댓글을 입력하세요..."
-            maxlength="500"
-        >
-
-        <button type="button" id="submitComment">
-            등록
-        </button>
-    </div>
-</div>       
-
-        <!-- 평가 -->
-
-        <div class="evaluation">
-
-            <h2>
-                작품 평가
-            </h2>
-
-            <p>
-                🎨 디자인　　★★★★★
-            </p>
-
-            <p>
-                💡 전달력　　★★★★☆
-            </p>
-
-            <p>
-                ✨ 창의성　　★★★★★
-            </p>
-
-            <p>
-                👍 사용성　　★★★★☆
-            </p>
-
-        </div>
-
-
-        <!-- 개선 의견 -->
-
-        <div class="evaluation">
-
-            <h2>
-                개선 의견
-            </h2>
-
-            <p>
-                노을의 색감과 구도가 잘 어우러져
-                작품의 분위기가 잘 전달됩니다.
-            </p>
-
-        </div>
-
-    </section>
-
+<div class="comment-row">
+<input id="commentInput" maxlength="500" placeholder="댓글을 입력하세요...">
+<button id="submitComment">등록</button>
 </div>
+
+<div id="commentList"></div>
+</section>
+
+<section>
+<h3>개선 의견</h3>
+<p class="summary">
+디자인, 전달력, 창의성, 사용성 등에 대한 의견을 댓글로 자유롭게 남겨주세요.
+</p>
+</section>
+
+<h3 class="related">함께 등록한 작품</h3>
+<div class="related-grid" id="related"></div>
+
+</main>
+</div>
+
 <script>
 
-    const params = new URLSearchParams(window.location.search);
+// 작품 정보
+const params=new URLSearchParams(location.search);
+const id=params.get('id')||'1';
 
-    const id = params.get("id");
+const defaults={
 
+'1':['노을의 순간','김민지','사진','images/work1.jpg','하루가 저무는 순간의 따뜻한 색감을 담았습니다.'],
 
-   
-   
-const works = {
-    1: {
-        category: "사진",
-        title: "노을의 순간",
-        author: "김지은",
-        date: "2026.10.03",
-        image: "images/work1.jpg"
-    },
-    2: {
-        category: "일러스트",
-        title: "꿈을 향해",
-        author: "박서연",
-        date: "2026.10.02",
-        image: "images/work2.jpg"
-    },
-    3: {
-        category: "사진",
-        title: "고양이의 하루",
-        author: "이도현",
-        date: "2026.10.01",
-        image: "images/work3.jpg"
-    },
-    4: {
-        category: "일러스트",
-        title: "따뜻한 시선",
-        author: "최민지",
-        date: "2026.09.30",
-        image: "images/work4.jpg"
-    },
-    5: {
-        category: "영상",
-        title: "달빛 아래의 꿈",
-        author: "한유진",
-        date: "2026.09.28",
-        image: "images/work5.jpeg"
-    },
-    6: {
-        category: "디자인",
-        title: "일상의 색채",
-        author: "김하늘",
-        date: "2026.09.26",
-        image: "images/work6.jpg"
-    },
-    7: {
-        category: "일러스트",
-        title: "여름의 정원",
-        author: "윤서아",
-        date: "2026.09.24",
-        image: "images/work7.jpeg"
-    },
-    8: {
-        category: "사진",
-        title: "분홍빛 풍경",
-        author: "이서윤",
-        date: "2026.09.22",
-        image: "images/work8.jpeg"
-    }
+'2':['꿈을 향해','이서연','회화','images/work2.jpg','꿈을 향해 나아가는 마음을 표현한 작품입니다.'],
+
+'3':['고양이의 하루','박지우','사진','images/work3.jpg','평범한 일상 속 귀여운 순간을 기록했습니다.'],
+
+'4':['따뜻한 시선','최유진','회화','images/work4.jpg','따뜻한 시선으로 바라본 일상의 모습을 담았습니다.'],
+
+'5':['달빛 아래의 꿈','정하늘','영상','images/work5.jpeg','달빛 아래 펼쳐지는 상상과 이야기를 표현했습니다.'],
+
+'6':['일상의 색채','윤서아','디자인','images/work6.jpg','일상에서 발견한 색과 형태를 재구성했습니다.'],
+
+'7':['여름의 정원','한도윤','회화','images/work7.jpeg','여름 정원의 생동감 있는 분위기를 담았습니다.'],
+
+'8':['분홍빛 풍경','김하린','사진','images/work8.jpeg','분홍빛으로 물든 풍경을 촬영했습니다.'],
+
+'9':['남서울대의 가을','홍니','영상','video/artwork.mp4','남서울대학교의 가을 풍경을 영상으로 기록했습니다.']
+
 };
 
+// Đọc tác phẩm do người dùng đăng ký
+let users=[];
 
-    // 선택한 작품 가져오기
-    const work = works[id] || works[1];
+try{
+users=JSON.parse(localStorage.getItem('userWorks')||'[]');
+}catch(e){}
 
+let work,key=id;
 
-    // 화면에 정보 넣기
-    document.getElementById("detailCategory").textContent =
-        work.category;
+if(id.startsWith('user-')){
 
-    document.getElementById("detailTitle").textContent =
-        work.title;
+ const n=Number(id.slice(5));
+ const w=users[n];
 
-    document.getElementById("detailAuthor").textContent =
-        work.author + " · " + work.date;
+ if(w){
+  work={
+   title:w.title,
+   author:w.author,
+   category:w.category,
+   description:w.description,
+   file:w.file,
+   fileType:w.fileType
+  };
+ }
 
+}else{
 
-    // 작품 이미지 변경
-   document.getElementById("detailImage").src = work.image;
-document.getElementById("detailImage").alt = work.title;
-// 저장 기능
-const saveBtn = document.getElementById("saveBtn");
+ const w=defaults[id]||defaults['1'];
 
-// 저장된 작품 목록 가져오기
-let savedWorks = JSON.parse(localStorage.getItem("savedWorks")) || [];
+ work={
+  title:w[0],
+  author:w[1],
+  category:w[2],
+  file:w[3],
+  description:w[4],
+  fileType:w[3].endsWith('.mp4')?'video/mp4':'image'
+ };
 
-// 현재 작품이 이미 저장되어 있는지 확인
-function updateSaveButton() {
-
-    if (savedWorks.includes(String(id))) {
-
-        saveBtn.innerHTML = "🔖 저장됨";
-        saveBtn.style.background = "#fbe8ec";
-        saveBtn.style.color = "#df657c";
-
-    } else {
-
-        saveBtn.innerHTML = "🔖 저장";
-        saveBtn.style.background = "white";
-        saveBtn.style.color = "#333";
-
-    }
 }
 
-// 저장 / 저장 취소
-function toggleSave() {
-
-    const currentId = String(id);
-
-    if (savedWorks.includes(currentId)) {
-
-        // 저장 취소
-        savedWorks = savedWorks.filter(item => item !== currentId);
-
-    } else {
-
-        // 저장
-        savedWorks.push(currentId);
-
-    }
-
-    // 브라우저에 저장
-    localStorage.setItem(
-        "savedWorks",
-        JSON.stringify(savedWorks)
-    );
-
-    updateSaveButton();
+if(!work){
+ work={
+  title:'작품을 찾을 수 없습니다.',
+  author:'',
+  category:'',
+  description:'등록된 작품 정보를 확인할 수 없습니다.'
+ };
 }
 
-// 페이지 열었을 때 상태 확인
-updateSaveButton();
+// Hiển thị thông tin tác phẩm
+document.title=work.title+' - 작품 상세';
 
-/* 좋아요 기능 */
+document.getElementById('category').textContent=work.category||'기타';
+document.getElementById('title').textContent=work.title||'';
+document.getElementById('author').textContent=work.author?'작가 · '+work.author:'';
+document.getElementById('description').textContent=work.description||'';
 
-const likeBtn = document.getElementById("likeBtn");
-const likeCount = document.getElementById("likeCount");
+// Hiển thị ảnh hoặc video
+if(work.fileType&&work.fileType.startsWith('video/')){
 
-const likeKey = "artworkLikes_" + id;
-const likedKey = "artworkLiked_" + id;
+ const v=document.getElementById('detailVideo');
+ v.src=work.file;
+ v.style.display='block';
 
-let likes = Number(localStorage.getItem(likeKey) ?? 32);
-let liked = localStorage.getItem(likedKey) === "true";
+}else if(work.file){
 
-function updateLikeButton() {
-    likeCount.textContent = likes;
-    likeBtn.classList.toggle("liked", liked);
-    likeBtn.firstChild.textContent = liked
-        ? "♥ 좋아요 "
-        : "♡ 좋아요 ";
+ const img=document.getElementById('detailImage');
+ img.src=work.file;
+ img.style.display='block';
+
+}else{
+
+ document.getElementById('media').textContent='작품 파일이 없습니다.';
+
 }
 
-likeBtn.addEventListener("click", function () {
-    if (liked) {
-        likes = Math.max(0, likes - 1);
-        liked = false;
-    } else {
-        likes++;
-        liked = true;
-    }
+// Lượt thích
+const likeKey='artworkLikes_'+key;
+const likedKey='artworkLiked_'+key;
 
-    localStorage.setItem(likeKey, likes);
-    localStorage.setItem(likedKey, liked);
+let likes=Number(localStorage.getItem(likeKey)||(key==='1'?32:0));
 
-    updateLikeButton();
+function updateLike(){
+
+ document.getElementById('likeCount').textContent=likes;
+
+ document.getElementById('likeBtn').classList.toggle(
+  'active',
+  localStorage.getItem(likedKey)==='true'
+ );
+
+}
+
+document.getElementById('likeBtn').onclick=()=>{
+
+ const liked=localStorage.getItem(likedKey)==='true';
+
+ likes=Math.max(0,likes+(liked?-1:1));
+
+ localStorage.setItem(likeKey,likes);
+ localStorage.setItem(likedKey,String(!liked));
+
+ updateLike();
+
+};
+
+updateLike();
+
+// Lưu tác phẩm
+function savedList(){
+
+ try{
+  return JSON.parse(localStorage.getItem('savedWorks')||'[]');
+ }catch(e){
+  return[];
+ }
+
+}
+
+function updateSave(){
+
+ const yes=savedList().includes(key);
+
+ document.getElementById('saveBtn').classList.toggle('active',yes);
+
+ document.querySelector('#saveBtn .material-symbols-rounded').textContent=
+ yes?'bookmark':'bookmark_border';
+
+}
+
+document.getElementById('saveBtn').onclick=()=>{
+
+ let a=savedList();
+
+ a=a.includes(key)?a.filter(x=>x!==key):[...a,key];
+
+ localStorage.setItem('savedWorks',JSON.stringify(a));
+
+ updateSave();
+
+};
+
+updateSave();
+
+// Bình luận
+const cKey='artworkComments_'+key;
+
+function comments(){
+
+ try{
+  return JSON.parse(localStorage.getItem(cKey)||'[]');
+ }catch(e){
+  return[];
+ }
+
+}
+
+function renderComments(){
+
+ const a=comments();
+ const list=document.getElementById('commentList');
+
+ document.getElementById('commentCount').textContent=a.length;
+ document.getElementById('commentHeadingCount').textContent=a.length;
+
+ list.innerHTML='';
+
+ if(!a.length){
+
+  list.innerHTML='<p class="summary" style="padding:15px 0">아직 댓글이 없습니다.</p>';
+  return;
+
+ }
+
+ a.forEach(x=>{
+
+  const d=document.createElement('div');
+  d.className='comment';
+
+  const t=document.createElement('span');
+  t.textContent=x.text;
+
+  const date=document.createElement('span');
+  date.className='date';
+  date.textContent=x.date||'';
+
+  d.append(t,date);
+  list.appendChild(d);
+
+ });
+
+}
+
+function addComment(){
+
+ const input=document.getElementById('commentInput');
+ const text=input.value.trim();
+
+ if(!text){
+  alert('댓글을 입력해주세요.');
+  return;
+ }
+
+ const a=comments();
+
+ a.push({
+  text,
+  date:new Date().toLocaleString('ko-KR')
+ });
+
+ localStorage.setItem(cKey,JSON.stringify(a));
+
+ input.value='';
+
+ renderComments();
+
+}
+
+document.getElementById('submitComment').onclick=addComment;
+
+document.getElementById('commentInput').addEventListener('keydown',e=>{
+ if(e.key==='Enter')addComment();
 });
 
-updateLikeButton();
-
-
-/* 댓글 기능 */
-
-const commentBtn = document.getElementById("commentBtn");
-const commentsSection = document.getElementById("commentsSection");
-const commentCount = document.getElementById("commentCount");
-const commentList = document.getElementById("commentList");
-const commentInput = document.getElementById("commentInput");
-const submitComment = document.getElementById("submitComment");
-
-const commentKey = "artworkComments_" + id;
-
-let comments = JSON.parse(
-    localStorage.getItem(commentKey) || "[]"
-);
-
-commentBtn.addEventListener("click", function () {
-    commentsSection.classList.toggle("show");
-
-    if (commentsSection.classList.contains("show")) {
-        commentsSection.scrollIntoView({
-            behavior: "smooth",
-            block: "nearest"
-        });
-
-        commentInput.focus();
-    }
-});
-
-function renderComments() {
-    commentList.replaceChildren();
-
-    if (comments.length === 0) {
-        const empty = document.createElement("p");
-        empty.className = "empty-comments";
-        empty.textContent = "아직 댓글이 없습니다.";
-        commentList.appendChild(empty);
-    }
-
-    comments.forEach(function (comment) {
-        const item = document.createElement("div");
-        item.className = "comment-item";
-
-        const name = document.createElement("div");
-        name.className = "comment-name";
-        name.textContent = comment.name;
-
-        const content = document.createElement("div");
-        content.className = "comment-text";
-        content.textContent = comment.text;
-
-        const time = document.createElement("div");
-        time.className = "comment-time";
-        time.textContent = comment.time;
-
-        item.append(name, content, time);
-        commentList.appendChild(item);
-    });
-
-    commentCount.textContent = comments.length;
-
-    localStorage.setItem(
-        commentKey,
-        JSON.stringify(comments)
-    );
-}
-
-function addComment() {
-    const text = commentInput.value.trim();
-
-    if (!text) {
-        commentInput.focus();
-        return;
-    }
-
-    comments.push({
-        name: "사용자",
-        text: text,
-        time: new Date().toLocaleString("ko-KR")
-    });
-
-    renderComments();
-    commentInput.value = "";
-}
-
-submitComment.addEventListener("click", addComment);
-
-commentInput.addEventListener("keydown", function (event) {
-    if (event.key === "Enter") {
-        addComment();
-    }
-});
+document.getElementById('commentBtn').onclick=()=>{
+ document.getElementById('commentsSection').scrollIntoView({behavior:'smooth'});
+};
 
 renderComments();
+
+// Đánh giá sao
+const rKey='artworkRatings_'+key;
+const myKey='artworkMyRating_'+key;
+
+function updateRating(){
+
+ const a=JSON.parse(localStorage.getItem(rKey)||'[]');
+
+ const avg=a.length?a.reduce((s,n)=>s+n,0)/a.length:0;
+
+ const my=Number(localStorage.getItem(myKey)||0);
+
+ document.getElementById('average').textContent=avg.toFixed(1);
+ document.getElementById('ratingCount').textContent=a.length;
+
+ document.querySelectorAll('.star').forEach(b=>{
+  b.classList.toggle('on',Number(b.dataset.star)<=my);
+ });
+
+}
+
+document.querySelectorAll('.star').forEach(b=>{
+
+ b.onclick=()=>{
+
+  const n=Number(b.dataset.star);
+
+  let a=JSON.parse(localStorage.getItem(rKey)||'[]');
+
+  const old=Number(localStorage.getItem(myKey)||0);
+
+  if(old){
+   const i=a.indexOf(old);
+   if(i>=0)a.splice(i,1);
+  }
+
+  a.push(n);
+
+  localStorage.setItem(rKey,JSON.stringify(a));
+  localStorage.setItem(myKey,n);
+
+  document.getElementById('ratingMessage').textContent=
+  n+'점을 선택했습니다. 감사합니다!';
+
+  updateRating();
+
+ };
+
+});
+
+updateRating();
+
+// Hiển thị các tác phẩm đã đăng ký
+const related=document.getElementById('related');
+
+if(!users.length){
+
+ related.innerHTML='<p class="empty">아직 등록한 작품이 없습니다.</p>';
+
+}else{
+
+ users.slice(-4).reverse().forEach((w,i)=>{
+
+  const n=users.length-1-i;
+
+  const a=document.createElement('a');
+  a.className='card';
+  a.href='detail.html?id=user-'+n;
+
+  let m;
+
+  if(w.fileType&&w.fileType.startsWith('video/')){
+
+   m=document.createElement('video');
+   m.muted=true;
+   m.playsInline=true;
+   m.preload='metadata';
+
+  }else{
+
+   m=document.createElement('img');
+   m.alt=w.title||'작품';
+
+  }
+
+  m.className='thumb';
+  m.src=w.file;
+
+  const info=document.createElement('div');
+  info.className='card-info';
+
+  const b=document.createElement('b');
+  b.textContent=w.title||'제목 없음';
+
+  const s=document.createElement('span');
+  s.textContent=(w.category||'기타')+' · '+(w.author||'작가 미상');
+
+  info.append(b,s);
+  a.append(m,info);
+
+  related.appendChild(a);
+
+ });
+
+}
+
 </script>
 </body>
-
 </html>
