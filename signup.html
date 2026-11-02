@@ -1,0 +1,120 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원가입 | 여백</title>
+ <link rel="icon" type="image/png" href="./img/palette.png?rev=20261025">
+    <link rel="stylesheet" href="css/signup.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="signup-page">
+
+        <!-- 상단 로고 -->
+       <header class="signup-header">
+    <a href="index.html" class="brand-logo">
+        <img src="img/logo-header.png" alt="여백 로고">
+    </a>
+    <span class="logo-sub">학생 작품 전시</span>
+</header>
+
+        <!-- 회원가입 영역 -->
+        <main class="signup-container">
+
+            <div class="signup-title">
+                <span class="title-small">WELCOME TO 여백</span>
+                <h1>회원가입</h1>
+                <p>여백에 오신 것을 환영합니다.</p>
+                <p>나만의 작품과 이야기를 공유해 보세요.</p>
+            </div>
+
+            <form action="#" method="post" class="signup-form">
+
+                <!-- 계정 정보 -->
+                <section class="form-section">
+                    <h2>계정 정보</h2>
+                    <p class="section-description">로그인에 사용할 정보를 입력해 주세요.</p>
+
+                    <div class="form-group">
+                        <label for="userId">아이디 <span>*</span></label>
+                        <input type="text" id="userId" name="userId"
+                            placeholder="아이디를 입력해 주세요." required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password">비밀번호 <span>*</span></label>
+                        <input type="password" id="password" name="password"
+                            placeholder="비밀번호를 입력해 주세요." required minlength="8">
+                        <small>8자 이상 입력해 주세요.</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="passwordCheck">비밀번호 확인 <span>*</span></label>
+                        <input type="password" id="passwordCheck" name="passwordCheck"
+                            placeholder="비밀번호를 다시 입력해 주세요." required>
+                    </div>
+                </section>
+
+                <!-- 개인 정보 -->
+                <section class="form-section">
+                    <h2>개인 정보</h2>
+                    <p class="section-description">회원님의 기본 정보를 입력해 주세요.</p>
+
+                    <div class="form-group">
+                        <label for="userName">이름 <span>*</span></label>
+                        <input type="text" id="userName" name="userName"
+                            placeholder="이름을 입력해 주세요." required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">이메일 <span>*</span></label>
+                        <input type="email" id="email" name="email"
+                            placeholder="이메일 주소를 입력해 주세요." required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">연락처</label>
+                        <input type="tel" id="phone" name="phone"
+                            placeholder="연락처를 입력해 주세요.">
+                    </div>
+                </section>
+
+                
+                <!-- 약관 동의 -->
+                <section class="agreement-section">
+                    <label class="agreement">
+                        <input type="checkbox" name="agreeTerms" required>
+                        <span>이용약관 및 개인정보 처리방침에 동의합니다. <b>*</b></span>
+                    </label>
+
+                    <label class="agreement">
+                        <input type="checkbox" name="agreeMarketing">
+                        <span>이벤트 및 새로운 소식 수신에 동의합니다. (선택)</span>
+                    </label>
+                </section>
+
+                <!-- 가입 버튼 -->
+                <button type="submit" class="signup-button">
+                    회원가입
+                </button>
+
+                <div class="login-link">
+                    이미 계정이 있으신가요?
+                    <a href="login.html">로그인</a>
+                </div>
+
+            </form>
+        </main>
+
+        <footer class="signup-footer">
+            © 2026 여백. 학생 작품 전시
+        </footer>
+
+    </div>
+
+</body>
+</html>
