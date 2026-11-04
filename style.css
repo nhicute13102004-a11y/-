@@ -1611,3 +1611,27 @@ footer .brand-logo img {
         font-size: 17px;
     }
 }
+/* 회원가입 및 로그인 버튼 */
+.auth-buttons {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 10px;
+}
+
+.signup-btn,
+.login-btn {
+    padding: 12px 25px;
+    border: none;
+    border-radius: 6px;
+    background-color: #b76e8d;
+    color: white;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.signup-btn:hover,
+.login-btn:hover {
+    background-color: #a45d7c;
+}
