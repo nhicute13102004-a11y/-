@@ -1,0 +1,233 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>로그인 | 여백</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded" rel="stylesheet">
+    
+    <style>
+        .login-page {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 30px 20px;
+            background: #f8f3f4;
+        }
+
+        .login-container {
+            width: 100%;
+            max-width: 420px;
+            padding: 45px 40px;
+            background: #fff;
+            border: 1px solid #f0dce3;
+            border-radius: 12px;
+            box-shadow: 0 8px 30px rgba(150, 90, 115, 0.08);
+        }
+
+        .login-logo {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 25px;
+        }
+
+        .login-logo img {
+            width: 100px;
+            height: 70px;
+            object-fit: contain;
+        }
+
+        .login-heading {
+            margin-bottom: 8px;
+            color: #45343b;
+            font-size: 25px;
+            text-align: center;
+        }
+
+        .login-description {
+            margin-bottom: 30px;
+            color: #99868e;
+            font-size: 13px;
+            text-align: center;
+        }
+
+        .login-form-group {
+            margin-bottom: 18px;
+        }
+
+        .login-form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #59434d;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .login-form-group input {
+            width: 100%;
+            height: 48px;
+            padding: 0 14px;
+            border: 1px solid #ead9df;
+            border-radius: 6px;
+            outline: none;
+            font-size: 13px;
+        }
+
+        .login-form-group input:focus {
+            border-color: #b76c88;
+        }
+
+        .login-submit {
+            width: 100%;
+            height: 49px;
+            margin-top: 10px;
+            border: none;
+            border-radius: 6px;
+            background: #b76c88;
+            color: #fff;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .login-submit:hover {
+            background: #9f526f;
+        }
+
+        .login-links {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 22px;
+            color: #99868e;
+            font-size: 12px;
+        }
+
+        .login-links a:hover {
+            color: #b76c88;
+        }
+
+        .login-divider {
+            color: #e5d5dc;
+        }
+
+        .login-signup {
+            margin-top: 30px;
+            padding-top: 22px;
+            border-top: 1px solid #f1e8ec;
+            color: #887780;
+            font-size: 13px;
+            text-align: center;
+        }
+
+        .login-signup a {
+            margin-left: 5px;
+            color: #b76c88;
+            font-weight: 700;
+        }
+
+        .login-home {
+            display: block;
+            margin-top: 25px;
+            color: #a08e96;
+            font-size: 12px;
+            text-align: center;
+        }
+
+        @media (max-width: 480px) {
+            .login-container {
+                padding: 35px 24px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <main class="login-page">
+
+        <div class="login-container">
+
+            <div class="login-logo">
+                <a href="index.html">
+                    <img src="img/logo-header.png" alt="여백 로고">
+                </a>
+            </div>
+
+            <h1 class="login-heading">로그인</h1>
+            <p class="login-description">
+                여백에 오신 것을 환영합니다.
+            </p>
+
+            <form id="loginForm">
+
+                <div class="login-form-group">
+                    <label for="loginEmail">이메일</label>
+                    <input
+                        type="email"
+                        id="loginEmail"
+                        placeholder="이메일을 입력해주세요"
+                        required
+                    >
+                </div>
+
+                <div class="login-form-group">
+                    <label for="loginPassword">비밀번호</label>
+                    <input
+                        type="password"
+                        id="loginPassword"
+                        placeholder="비밀번호를 입력해주세요"
+                        required
+                    >
+                </div>
+
+                <button type="submit" class="login-submit">
+                    로그인
+                </button>
+
+            </form>
+
+            <div class="login-links">
+                <a href="#" onclick="alert('서비스 준비 중입니다.'); return false;">아이디 찾기</a>
+                <span class="login-divider">|</span>
+                <a href="#" onclick="alert('서비스 준비 중입니다.'); return false;">비밀번호 찾기</a>
+            </div>
+
+            <div class="login-signup">
+                아직 회원이 아니신가요?
+                <a href="signup.html">회원가입</a>
+            </div>
+
+            <a href="index.html" class="login-home">
+                ← 홈으로 돌아가기
+            </a>
+
+        </div>
+
+    </main>
+
+    <script>
+        document.getElementById("loginForm").addEventListener("submit", function(e) {
+            e.preventDefault();
+
+            const email = document.getElementById("loginEmail").value;
+            const password = document.getElementById("loginPassword").value;
+
+            if (!email || !password) {
+                alert("이메일과 비밀번호를 입력해주세요.");
+                return;
+            }
+
+            alert("로그인 기능은 준비 중입니다.");
+        });
+    </script>
+
+</body>
+</html>
